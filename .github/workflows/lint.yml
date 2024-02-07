@@ -3,9 +3,11 @@ name: Lint
 on:
   push:
     branches:
+      -Code-Linting-Workflow-ajaykumarmedikonda-240702
       - main
   pull_request:
     branches:
+      -Code-Linting-Workflow-ajaykumarmedikonda-240702
       - main
 
 jobs:
