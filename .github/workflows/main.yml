@@ -1,0 +1,21 @@
+name: Code-Linting
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Super-Linter
+        uses: super-linter/super-linter@v6.0.0
+            
