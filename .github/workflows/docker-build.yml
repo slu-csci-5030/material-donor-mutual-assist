@@ -3,7 +3,7 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - vineeth
+      - Code-Linting-Workflow-Vineeth0502-02-07-2024
 
 
 jobs:
