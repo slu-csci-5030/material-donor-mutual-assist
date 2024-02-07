@@ -1,0 +1,30 @@
+name: Docker Build and Push
+
+on:
+  push:
+    branches:
+      - estimation-github-yrlmanoharreddy-240131
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Docker
+        run: docker --version
+
+      - name: Build Docker image
+        run: |
+          cd crew_manual
+          docker build -t yrlmanoharreddymeda/yrl-astroapp .
+      - name: Log in to Docker Hub
+        run: docker login -u yrlmanoharreddymeda -p Manohar123%
+
+      - name: Push Docker image
+        run: docker push yrlmanoharreddymeda/yrl-astroapp
+      
+      - name: Run Docker container
+        run: docker run -d -p 4321:3000 yrlmanoharreddymeda/yrl-astroapp;
