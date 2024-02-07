@@ -3,11 +3,11 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - Estimation-github-Raghunath9493-200130
+      - code-linting-workflow-Raghunath9493-240207
       - main
   pull_request:
     branches:
-    - Estimation-github-Raghunath9493-200130
+    - code-linting-workflow-Raghunath9493-240207
     - main 
   
       
