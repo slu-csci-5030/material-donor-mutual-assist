@@ -1,0 +1,32 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - Estimation-github-Raghunath9493-200130
+      - main
+  pull_request:
+    branches:
+    - Estimation-github-Raghunath9493-200130
+    - main 
+  
+      
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install Dependencies
+        run: npm install
+
+      # - name: Code Linting
+      #   run: npm run lint
