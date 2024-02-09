@@ -3,7 +3,7 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - material-donor-mutual-assist
+      - linting-workflow-Abhi-Stephen-240209
 
 jobs:
   build:
