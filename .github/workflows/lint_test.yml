@@ -3,9 +3,11 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
+      - Code-Linting-Workflow-VenkataSaiPolakam-240207
       - main
   pull_request:
     branches:
+      - Code-Linting-Workflow-VenkataSaiPolakam-240207
       - main
 
 jobs:
