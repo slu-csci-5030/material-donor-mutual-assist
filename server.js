@@ -12,3 +12,5 @@ app.get('/', (req, res) => {
 
 app.use('/users', userRouter)
 app.use('/admin', adminRouter)
+
+export default app
