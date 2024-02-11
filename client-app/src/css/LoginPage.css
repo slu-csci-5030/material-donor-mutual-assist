@@ -1,0 +1,72 @@
+.input-style {
+    padding: 8px 16px;
+    margin-top: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+  }
+  
+  .btn-style {
+    background-color: #3498db;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .btn-style:hover {
+    background-color: #2980b9;
+  }
+
+  .btn-success {
+    background-color: #29b982;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .btn-success:hover {
+    background-color: #29b982;
+  }
+
+  .button-gap {
+    margin: 0 10px; /* Adjust the margin as needed */
+  }
+
+  .btn-container {
+    margin-top: 20px; /* Adjust the margin value as needed */
+  }
+
+  .login-label {
+    font-size: 27px;
+  }
+
+  .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  .login-box {
+    width: 300px; /* Set the width of the box */
+    padding: 20px; /* Add some padding inside the box */
+    background-color: white; /* Set the background color */
+    border-radius: 8px; /* Add rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a shadow */
+  }
+  
+  /* Rest of the styles remain the same */
+  
+  
