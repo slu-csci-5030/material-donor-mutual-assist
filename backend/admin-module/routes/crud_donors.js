@@ -6,7 +6,7 @@ const donors = [
 ]; //will be replaced with real database connection
 
 /* GET users listing. */
-router.get('/list', function(req, res, next) {
+router.get('/', function(req, res, next) {
   res.json(donors);
 });
 
