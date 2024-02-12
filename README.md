@@ -15,6 +15,7 @@ This is the repository for Material Donor Mutual Assist project.
 
 ### To run test cases
 
+(These can be run with or without the above steps)
 - To run all tests  
   <code>npm test</code>
 - To run mock tests for admin-module/crud_donors.js 
