@@ -21,7 +21,7 @@ You may also see any lint errors in the console.
 Make sure to have Node.js and npm installed in your machine.
 
 ### `Running Test cases`
-npm test
+npm test ( We don't have to run the app to run the test cases. Just use npm test to run all the test cases available.)
 
 ### `Test Cases`
 1. Renders Signup header
