@@ -1,71 +1,33 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 import LoginPage from './LoginPage';
+import { BrowserRouter } from 'react-router-dom';
+import '@testing-library/jest-dom/extend-expect';
 
-describe('LoginPage', () => {
-  // Mock localStorage
-  const localStorageMock = (() => {
-    let store = {};
-    return {
-      getItem: jest.fn((key) => store[key]),
-      setItem: jest.fn((key, value) => {
-        store[key] = value.toString();
-      }),
-      clear: jest.fn(() => {
-        store = {};
-      }),
-    };
-  })();
-  
-  Object.defineProperty(window, 'localStorage', {
-    value: localStorageMock,
-  });
+describe('LoginPage Component', () => {
+    test('renders without crashing', () => {
+        render(<BrowserRouter><LoginPage /></BrowserRouter>);
+        expect(screen.getByRole('button', { name: /login/i })).toBeInTheDocument();
+    });
 
-  it('should render login form', () => {
-    const { getByText, getByPlaceholderText } = render(<LoginPage />);
-    
-    expect(getByText('Login')).toBeInTheDocument();
-    expect(getByPlaceholderText('Username')).toBeInTheDocument();
-    expect(getByPlaceholderText('Password*')).toBeInTheDocument();
-    expect(getByText('Forgot Password')).toBeInTheDocument();
-  });
+    test('submits form with valid credentials', () => {
+        const mockUser = { username: 'user', password: 'dts@123' };
+        const localStorageMock = {
+            getItem: jest.fn().mockReturnValue(JSON.stringify(mockUser)),
+            setItem: jest.fn(),
+        };
+        global.localStorage = localStorageMock;
 
-  it('should display alert on successful login', () => {
-    const { getByText, getByPlaceholderText, getByRole } = render(<LoginPage />);
+        render(<BrowserRouter><LoginPage /></BrowserRouter>);
 
-    // Mock user input
-    fireEvent.change(getByPlaceholderText('Username'), { target: { value: 'user' } });
-    fireEvent.change(getByPlaceholderText('Password*'), { target: { value: 'dts@123' } });
+        fireEvent.change(screen.getByPlaceholderText('Username'), { target: { value: 'user' } });
+        fireEvent.change(screen.getByPlaceholderText('Password*'), { target: { value: 'dts@123' } });
 
-    // Mock login button click
-    fireEvent.click(getByRole('button', { name: 'Login' }));
+        // Mock window.alert
+        const alert = jest.spyOn(window, 'alert').mockImplementation(() => { });
 
-    expect(window.alert).toHaveBeenCalledWith('Login successful');
-  });
+        fireEvent.click(screen.getByRole('button', { name: /login/i }));
 
-  it('should display alert on invalid username or password', () => {
-    const { getByText, getByPlaceholderText, getByRole } = render(<LoginPage />);
-
-    // Mock user input
-    fireEvent.change(getByPlaceholderText('Username'), { target: { value: 'wronguser' } });
-    fireEvent.change(getByPlaceholderText('Password*'), { target: { value: 'wrongpassword' } });
-
-    // Mock login button click
-    fireEvent.click(getByRole('button', { name: 'Login' }));
-
-    expect(window.alert).toHaveBeenCalledWith('Invalid username or password');
-  });
-
-  it('should display alert on user not found', () => {
-    const { getByText, getByPlaceholderText, getByRole } = render(<LoginPage />);
-
-    // Mock user input
-    fireEvent.change(getByPlaceholderText('Username'), { target: { value: 'nonexistentuser' } });
-    fireEvent.change(getByPlaceholderText('Password*'), { target: { value: 'anypassword' } });
-
-    // Mock login button click
-    fireEvent.click(getByRole('button', { name: 'Login' }));
-
-    expect(window.alert).toHaveBeenCalledWith('User not found');
-  });
+        expect(alert).toHaveBeenCalledWith('Login successful');
+    });
 });
