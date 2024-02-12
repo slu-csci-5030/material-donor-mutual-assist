@@ -51,7 +51,6 @@
     "react-scripts": "^5.0.1"
   },
   "jest": {
-    "testEnvironment": "jsdom",
     "transform": {
       "^.+\\.jsx?$": "babel-jest"
     }
