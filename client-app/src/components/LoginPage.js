@@ -1,32 +1,28 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom'; // Import Link for navigation
 import '../css/LoginPage.css'; // Import CSS file for styling
 
-interface User {
-  username: string;
-  password: string;
-}
-
-const LoginPage: React.FC = () => {
-  const [user, setUser] = useState<User>({ username: '', password: '' });
+const LoginPage = () => {
+  const [user, setUser] = useState({ username: '', password: '' });
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleUsernameChange = (e) => {
     setUser({ ...user, username: e.target.value });
   };
 
-  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handlePasswordChange = (e) => {
     setUser({ ...user, password: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     // Retrieve user data from local storage
-    const storedUser = localStorage.setItemItem('user');
-    
+    const storedUser = localStorage.getItem('user');
+
     if (storedUser) {
-      const parsedUser: User = JSON.parse(storedUser);
-      
+      const parsedUser = JSON.parse(storedUser);
+
       // Verify username and password
       if (user.username === parsedUser.username && user.password === parsedUser.password) {
         alert('Login successful');
@@ -40,15 +36,20 @@ const LoginPage: React.FC = () => {
 
   const handleLogin = () => {
     // Store user data in local storage
-    localStorage.setItem('user', JSON.stringify(user));
+    const userDetails = { username: 'user', password: 'dts@123' };
+    localStorage.setItem('user', JSON.stringify(userDetails));
+    
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-200">
       <div className="login-container">
+        <div className="login-header">
+          <h1>Donor Tracking System</h1>
+        </div>
         <div className="login-box">
           <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-            <h1 className="login-label">Login</h1>
+            <h2 className="login-label">Login</h2>
 
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
@@ -63,7 +64,7 @@ const LoginPage: React.FC = () => {
               </div>
 
               <div className="mb-6">
-                <div className="password-input-group">  
+                <div className="password-input-group">
                   <input
                     type={showPassword ? 'text' : 'password'}
                     className="input-style"
@@ -79,6 +80,7 @@ const LoginPage: React.FC = () => {
                 <button
                   className="btn-success"
                   type="submit"
+                  onClick={handleLogin}
                 >
                   Login
                 </button>
@@ -90,6 +92,9 @@ const LoginPage: React.FC = () => {
                 </button>
               </div>
             </form>
+          </div>
+          <div className="register-link">
+            <p>Not a User? <Link to="/register">Register</Link></p>
           </div>
         </div>
       </div>
