@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 const donors = [
-  { id: 1, name: 'Alice', email: 'abc@abcd.com', phone: '2121212121',address_line_1: '12, some street'},
-  { id: 2, name: 'Bob' ,email: 'bob@abcd.com', phone: '3232323232',address_line_1: '34, same street'},
+  { id: 1, name: 'SaiKiran', email: 'saikiran@abcd.com', phone: '3145785541', address_line_1: '4486, western street' },
+      { id: 2, name: 'Hari', email: 'hari@abcd.com', phone: '3147584578', address_line_1: '4475, western street' }
 ]; //will be replaced with real database connection
 
 /* GET users listing. */

@@ -18,11 +18,12 @@ describe('GET / endpoint', () => {
     
     // Assert the response body contains the expected donors
     expect(response.body).toEqual([
-      { id: 1, name: 'Alice', email: 'abc@abcd.com', phone: '2121212121', address_line_1: '12, some street' },
-      { id: 2, name: 'Bob', email: 'bob@abcd.com', phone: '3232323232', address_line_1: '34, same street' }
+      { id: 1, name: 'SaiKiran', email: 'saikiran@abcd.com', phone: '3145785541', address_line_1: '4486, western street' },
+      { id: 2, name: 'Hari', email: 'hari@abcd.com', phone: '3147584578', address_line_1: '4475, western street' }
     ]);
   });
 });
+
 
 describe('A test case that always passes', () => {
     it('should always pass', () => {
