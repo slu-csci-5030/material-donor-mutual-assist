@@ -26,7 +26,7 @@ describe('GET / endpoint', () => {
 
 describe('A test case that always passes', () => {
     it('should always pass', () => {
-      // Assert true is always true, so this test will always pass
+      // Assert true is always true, so the test will always pass
       expect(true).toBe(true);
     });
   });
