@@ -17,6 +17,18 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+
+      - name: Install npm
+        run: npm install
+
+      - name: jest
+        run: npm install --save-dev jest@latest
+
+      - name: jsdom
+        run: npm install --save-dev jsdom@latest
+
+      - name: babel
+        run: npm install --save-dev @babel/preset-env @babel/preset-react
     
       - name: Instal Scripts
         run: npm install react-scripts --save-dev
