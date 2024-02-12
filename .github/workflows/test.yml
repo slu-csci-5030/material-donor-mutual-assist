@@ -17,23 +17,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-
-      - name: Set up Docker
-        run: docker --version
-
-      - name: Build Docker image
-        run: |
-          cd crew_manual
-          docker build -t alar12/my-app .
-
-      - name: Log in to Docker Hub
-        run: docker login -u alar12 -p Aa12345*#
-
-      - name: Push Docker image
-        run: docker push alar12/my-app
-
-      - name: Install ESLint globally
-        run: npm install -g eslint
-
+        
       - name: Run Tests
         run: npm run test
