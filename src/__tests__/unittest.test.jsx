@@ -1,20 +1,7 @@
 import React from 'react';
 import { render, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import 'jest-localstorage-mock';
-import Login from '../Components/Login.js';
-
-test('input values change correctly', () => {
-    const { getByLabelText } = render(<Login />);
-    const emailInput = getByLabelText('Email address');
-    const passwordInput = getByLabelText('Password');
-
-    fireEvent.change(emailInput, { target: { value: 'email@gmail.com' } });
-    fireEvent.change(passwordInput, { target: { value: 'password' } });
-
-    expect(emailInput.value).toBe('email@gmail.com');
-    expect(passwordInput.value).toBe('password');
-});
+import Login from '../Components/Login';
 
 describe('Login Component', () => {
   test('renders login form correctly', () => {
@@ -28,6 +15,21 @@ describe('Login Component', () => {
     expect(passwordInput).toBeInTheDocument();
     expect(submitButton).toBeInTheDocument();
   });
+
+  test('updates input value', () => {
+    const { getByLabelText } = render(<Login />);
+    
+    const emailInput = getByLabelText('Email address');
+    const passwordInput = getByLabelText('Password');
+  
+    fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
+    fireEvent.change(passwordInput, { target: { value: 'testpassword' } });
+  
+    expect(emailInput.value).toBe('test@example.com');
+    expect(passwordInput.value).toBe('testpassword');
+  });
+
+  
 
   test('handles form submission correctly with valid credentials', async () => {
     const fakeAuthToken = 'fakeAuthToken';
@@ -48,6 +50,4 @@ describe('Login Component', () => {
     await waitFor(() => expect(localStorage.getItem('token')).toEqual(fakeAuthToken));
     expect(window.location.href).toBe('http://localhost/');
   });
-
-  
 });
