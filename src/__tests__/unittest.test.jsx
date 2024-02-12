@@ -18,18 +18,14 @@ describe('Login Component', () => {
   });
 
   test('updates input value', () => {
-    // Render the Login component
     const { getByLabelText } = render(<Login />);
     
-    // Get input elements by their respective labels
     const emailInput = getByLabelText('Email address');
     const passwordInput = getByLabelText('Password');
   
-    // Simulate user input by changing the input values
     fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
     fireEvent.change(passwordInput, { target: { value: 'testpassword' } });
   
-    // Check if the input values are updated correctly
     expect(emailInput.value).toBe('test@example.com');
     expect(passwordInput.value).toBe('testpassword');
   });
@@ -57,3 +53,4 @@ describe('Login Component', () => {
   });
 
   
+});
