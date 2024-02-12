@@ -43,8 +43,9 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "latest-version",
+    "@babel/preset-react": "^7.23.3",
     "nodemon": "^3.0.3",
-    "react-scripts": "^5.0.1",
-    "@babel/plugin-proposal-private-property-in-object": "latest-version"
+    "react-scripts": "^5.0.1"
   }
 }
