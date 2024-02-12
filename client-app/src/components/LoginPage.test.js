@@ -1,12 +1,14 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 import LoginPage from './LoginPage';
+import { BrowserRouter } from 'react-router-dom';
+import '@testing-library/jest-dom/extend-expect';
+
 
 describe('LoginPage Component', () => {
     test('renders without crashing', () => {
-        render(<LoginPage />);
-        // Expecting that at least one element with the login label is rendered
-        expect(screen.getByText('Login')).toBeInTheDocument();
+        render(<BrowserRouter><LoginPage /></BrowserRouter>);
+        expect(screen.getByRole('button', { name: /login/i })).toBeInTheDocument();
     });
 
     test('submits form with valid credentials', () => {
@@ -17,16 +19,16 @@ describe('LoginPage Component', () => {
         };
         global.localStorage = localStorageMock;
 
-        render(<LoginPage />);
+        render(<BrowserRouter><LoginPage /></BrowserRouter>);
 
-        // Fill out the form
         fireEvent.change(screen.getByPlaceholderText('Username'), { target: { value: 'user' } });
         fireEvent.change(screen.getByPlaceholderText('Password*'), { target: { value: 'dts@123' } });
 
-        // Submit the form
-        fireEvent.click(screen.getByText('Login'));
+        // Mock window.alert
+        const alert = jest.spyOn(window, 'alert').mockImplementation(() => { });
 
-        // Expect alert with 'Login successful'
-        expect(window.alert).toHaveBeenCalledWith('Login successful');
+        fireEvent.click(screen.getByRole('button', { name: /login/i }));
+
+        expect(alert).toHaveBeenCalledWith('Login successful');
     });
 });
