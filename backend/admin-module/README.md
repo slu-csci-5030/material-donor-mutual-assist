@@ -1,13 +1,3 @@
-# material-donor-mutual-assist
-This is the repository for Material Donor Mutual Assist project.
-
-
-## Test case is writtern for admin-module of backend application
-
-## Written unit for admin-module section of /donorsList  endpoint and To show material donors the impact of their donations.
-
-
-
 Instructions for Running the Tests:
 For the issue #23: Test case for getting list of donors data using the /donorsList endpoint
 ## Witten unit tests for admin-module section of /donorsList  endpoint
@@ -48,7 +38,6 @@ To show material donors the impact of their donations.
    (or)
    if does not work, try with root user
    # sudo npm install
-
 
 
 4. Run the unit test using the command 
