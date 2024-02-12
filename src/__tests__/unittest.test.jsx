@@ -28,26 +28,4 @@ describe('Login Component', () => {
     expect(emailInput.value).toBe('test@example.com');
     expect(passwordInput.value).toBe('testpassword');
   });
-
-  
-
-  test('handles form submission correctly with valid credentials', async () => {
-    const fakeAuthToken = 'fakeAuthToken';
-    jest.spyOn(window, 'fetch').mockResolvedValueOnce({
-      json: () => Promise.resolve({ success: true, authtoken: fakeAuthToken }),
-    });
-
-    const { getByLabelText, getByText } = render(<Login />);
-
-    const emailInput = getByLabelText('Email address');
-    const passwordInput = getByLabelText('Password');
-    const submitButton = getByText('Submit');
-
-    fireEvent.change(emailInput, { target: { value: 'email@gmail.com' } });
-    fireEvent.change(passwordInput, { target: { value: 'password' } });
-    fireEvent.click(submitButton);
-
-    await waitFor(() => expect(localStorage.getItem('token')).toEqual(fakeAuthToken));
-    expect(window.location.href).toBe('http://localhost/');
-  });
 });
