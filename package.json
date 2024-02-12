@@ -21,7 +21,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test && ./node_modules/.bin/react-scripts test",
+    "test": "react-scripts test && ./node_modules/.bin/react-scripts test && jest",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -44,6 +44,7 @@
   },
   "devDependencies": {
     "nodemon": "^3.0.3",
-    "react-scripts": "^5.0.1"
+    "react-scripts": "^5.0.1",
+    "@babel/plugin-proposal-private-property-in-object": "latest-version"
   }
 }
