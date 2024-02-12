@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, fireEvent, cleanup, waitFor } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import 'jest-localstorage-mock';
 import Login from '../Components/Login.js';
@@ -14,17 +14,6 @@ test('input values change correctly', () => {
 
     expect(emailInput.value).toBe('email@gmail.com');
     expect(passwordInput.value).toBe('password');
-});
-
-const mockAlert = jest.spyOn(window, 'alert').mockImplementation(() => {});
-
-beforeEach(() => {
-  delete window.location;
-  window.location = { assign: jest.fn(), href: '/' }; // or any default URL you want
-});
-
-afterEach(() => {
-  mockAlert.mockRestore();
 });
 
 test('form submission works correctly', async () => {
