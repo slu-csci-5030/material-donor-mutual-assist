@@ -51,11 +51,12 @@
     "react-scripts": "^5.0.1"
   },
   "jest": {
-    "setupFilesAfterEnv": ["<rootDir>/jest.setup.js"],
     "testEnvironment": "jsdom",
     "transform": {
       "^.+\\.jsx?$": "babel-jest"
-    }
+    },
+    "setupFilesAfterEnv": ["src/setupTests.js"]
   }
+  
   
 }
