@@ -8,7 +8,6 @@ router.get('/', (req, res) => {
 
 router.get('/getmessage/:name', (req, res) => {
   const name = req.params.name
-  res.send('Hi ' + name)
-  res.send('Getting your details')
+  res.send('Hi ' + name + '\n Start your donations now!!!')
 })
 export default router

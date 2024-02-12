@@ -7,21 +7,21 @@ module.exports = {
   overrides: [
     {
       env: {
-        browser: true,
+        jest: true,
         node: true
       },
       files: [
+        'tests/**/*',
+        'babel.config.{js}',
         '.eslintrc.{js}'
       ],
       parserOptions: {
-        sourceType: 'script'
+        sourceType: 'module'
       }
     }
   ],
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module'
-  },
-  rules: {
   }
 }
