@@ -1,7 +1,14 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import Login from '../Components/Login';
+import { render, fireEvent } from '@testing-library/react';
+import Login from '../Components/Login.js';
 
-test('renders Login component without errors', () => {
-    render(<Login />);
+test('input values change correctly', () => {
+    const { getByLabelText } = render(<Login />);
+    const emailInput = getByLabelText('Email address');
+    const passwordInput = getByLabelText('Password');
+
+    fireEvent.change(emailInput, { target: { value: 'email@gmail.com' } });
+    fireEvent.change(passwordInput, { target: { value: 'password' } });
+
+    expect(emailInput.value).toBe('email@gmail.com');
+    expect(passwordInput.value).toBe('password');
 });
