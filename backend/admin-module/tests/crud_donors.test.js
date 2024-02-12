@@ -1,16 +1,12 @@
-// Import necessary modules and the router
 const express = require('express');
 const supertest = require('supertest');
-const router = require('../routes/crud_donors'); // Assuming your router file is named router.js
+const router = require('../routes/crud_donors');
 
-// Create a test app using express
 const app = express();
 app.use('/', router);
 
-// Define the test using Jest
 describe('GET / endpoint', () => {
   it('responds with JSON containing all donors', async () => {
-    // Send a GET request to the endpoint
     const response = await supertest(app).get('/');
     
     // Assert the response status code
@@ -24,6 +20,7 @@ describe('GET / endpoint', () => {
   });
 });
 
+//a sample test case
 describe('A test case that always passes', () => {
     it('should always pass', () => {
       // Assert true is always true, so this test will always pass
