@@ -44,7 +44,9 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "latest-version",
+    "@babel/preset-env": "^7.23.9",
     "@babel/preset-react": "^7.23.3",
+    "jest": "^27.5.1",
     "jest-environment-jsdom": "^29.7.0",
     "jsdom": "^24.0.0",
     "jsdom-global": "^3.0.2",
