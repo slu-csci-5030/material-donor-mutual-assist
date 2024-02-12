@@ -11,7 +11,7 @@ const App = () => {
     <Router>
       <div className="App">
         <Navbar />
-        <Routes> {/* Wrap your Route components inside Routes */}
+        <Routes> {}
           <Route path="/login" element={<Login />} /> {/* Use element prop to render components */}
           <Route path="/register" element={<Register />}/>
           <Route path="/about" element={<About />}/>
