@@ -9,3 +9,22 @@ test('displays alert for successful login', () => {
     fireEvent.click(screen.getByText('Login'));
     expect(window.alert).toHaveBeenCalledWith('Login successful');
 });
+
+test('renders the login form with username and password fields', () => {
+    render(<LoginPage />);
+    const usernameInput = screen.getByPlaceholderText('Username');
+    const passwordInput = screen.getByPlaceholderText('Password*');
+    expect(usernameInput).toBeInTheDocument();
+    expect(passwordInput).toBeInTheDocument();
+  });
+
+  test('allows user to input username and password', () => {
+    render(<LoginPage />);
+    const usernameInput = screen.getByPlaceholderText('Username');
+    const passwordInput = screen.getByPlaceholderText('Password*');
+    fireEvent.change(usernameInput, { target: { value: 'testuser' } });
+    fireEvent.change(passwordInput, { target: { value: 'testpassword' } });
+    expect(usernameInput.value).toBe('testuser');
+    expect(passwordInput.value).toBe('testpassword');
+  });
+  
