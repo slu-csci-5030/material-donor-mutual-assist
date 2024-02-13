@@ -81,6 +81,7 @@ const LoginPage = () => {
                   className="btn-success"
                   type="submit"
                   onClick={handleLogin}
+                  name="login"
                 >
                   Login
                 </button>
