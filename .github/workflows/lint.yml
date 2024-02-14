@@ -1,13 +1,13 @@
-name: Lint
+name: CI/CD Pipeline
 
 on:
   push:
     branches:
-      -Code-Linting-Workflow-ajaykumarmedikonda-240702
+      - Code-Linting-Workflow-ajaykumarmedikonda-240702
       - main
   pull_request:
     branches:
-      -Code-Linting-Workflow-ajaykumarmedikonda-240702
+      - Code-Linting-Workflow-ajaykumarmedikonda-240702
       - main
 
 jobs:
@@ -15,16 +15,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
+    - name: Checkout repository
       uses: actions/checkout@v2
 
     - name: Setup Node.js
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v2
       with:
         node-version: '14'
 
     - name: Install dependencies
       run: npm install
 
-    #- name: Run ESLint
-    #  run: npm run lint
+    # - name: Run ESLint
+    #   run: npm run lint
