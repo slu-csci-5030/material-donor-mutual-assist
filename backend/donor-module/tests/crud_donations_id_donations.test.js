@@ -20,6 +20,9 @@ describe('GET / endpoint', () => {
     expect(response.body).toEqual([
       { id: 1, name: 'Alice', donations: 'Laptop', Quantity: '1'},
       { id: 2, name: 'Robby', donations: 'Microphone', Quantity: '1'},
+      { id: 3, name: 'Vicky', donations: 'Mobile', Quantity: '1'},
+      { id: 4, name: 'Ramu', donations: 'Bicycle', Quantity: '1'},
+      { id: 5, name: 'John', donations: 'Computer', Quantity: '1'},
     ]);
   });
 });
