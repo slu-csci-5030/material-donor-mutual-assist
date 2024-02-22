@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
 
-function App() {
+function DonationForm() {
+  const [isDonationSubmitted, setIsDonationSubmitted] = useState(false);
+
+  const handleDonationSubmit = async () => {
+    // Logic to submit donation request to the backend
+    // Upon successful submission, set isDonationSubmitted to true
+    setIsDonationSubmitted(true);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {!isDonationSubmitted ? (
+        <div>
+          {/* Donation form UI */}
+          <button onClick={handleDonationSubmit}>Submit Donation</button>
+        </div>
+      ) : (
+        <div>
+          <p>Thank you for your donation!</p>
+          {/* Display details of the donated materials */}
+        </div>
+      )}
     </div>
   );
 }
 
-export default App;
+export default DonationForm;
