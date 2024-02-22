@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import DonationForm from '../DonationForm';
+import DonationForm from 'client-app/src/DonationForm.js';
 
 test('displays confirmation message after donation submission', async () => {
   const { getByText, getByRole } = render(<DonationForm />);
