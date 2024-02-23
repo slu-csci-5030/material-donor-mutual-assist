@@ -6,7 +6,7 @@ on:
       - unit-tests-assignment-SravyaPadala-240211
 
 jobs:
-  pre-process:
+  test_and_build:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,20 +21,12 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-  code-testing:
-    runs-on: ubuntu-latest
-
-    steps:
     - name: Code linting
       run: npx eslint .
 
     - name: Code Testing
       run: npm run test
 
-  push-to-docker:
-    runs-on: ubuntu-latest
-
-    steps:
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v2
 
