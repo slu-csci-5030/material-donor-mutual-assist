@@ -14,14 +14,12 @@ module.exports = {
         'tests/**/*',
         'babel.config.{js}',
         '.eslintrc.{js}'
-      ],
-      parserOptions: {
-        sourceType: 'module'
-      }
+      ]
     }
   ],
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module'
-  }
+  },
+  parser: '@babel/eslint-parser'
 }

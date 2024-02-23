@@ -1,5 +1,5 @@
 import express from 'express'
-// import data from '../datafiles/DonorData.json'
+import DList from '../datafiles/DonorData.json' with {type: 'json'}
 const router = express.Router()
 
 router.get('/', (req, res) => {
@@ -8,6 +8,27 @@ router.get('/', (req, res) => {
 
 router.get('/getmessage/:name', (req, res) => {
   const name = req.params.name
-  res.send('Hi ' + name + '\n Start your donations now!!!')
+  const newUser = findNewUser(name)
+  let message = ''
+  if (newUser) {
+    message = 'Hi ' + name + '! Welcome to the donation club!!!'
+  } else {
+    message = 'Welcome back ' + name + '!! Check your impact now!'
+  }
+  res.status(200).send(message)
 })
+
+function findNewUser (name) {
+  let flag = true
+  const userList = DList.DonorList
+  console.log(userList)
+  userList.forEach((user) => {
+    console.log(user.name)
+    if (name === user.name) {
+      console.log(user.name + 'exists')
+      flag = false
+    }
+  })
+  return flag
+}
 export default router
