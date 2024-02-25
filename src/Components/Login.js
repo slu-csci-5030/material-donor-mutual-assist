@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import { Link } from 'react-router-dom';
 //import { useNavigate } from 'react-router-dom'
 
 
@@ -17,15 +18,15 @@ const Login = (props) => {
         });
         const json = await response.json()
         console.log(json);
-        //if (json.success){
+        if (json.success){
             // Save the auth token and redirect
             localStorage.setItem('token', json.authtoken); 
             window.location.href = '/About'
 
-        //}
-        // else{
-        //     alert("Invalid credentials");
-        // }
+        }
+        else{
+            alert("Invalid credentials");
+        }
     }
 
     const onChange = (e)=>{
@@ -46,6 +47,7 @@ const Login = (props) => {
                 </div>
 
                 <button type="submit" className="btn btn-primary">Submit</button>
+                <Link to="/forgot-password" className="btn btn-link">Forgot Password?</Link> {/* Link to Forgot Password page */}
             </form>
         </div>
     )

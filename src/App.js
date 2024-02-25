@@ -3,7 +3,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Im
 import Navbar from './Components/Navbar';
 import Login from './Components/Login'; 
 import Register from './Components/Register';
-import About from './Components/About';
+//import About from './Components/About';
+import Home from './Components/Home';
+import ForgotPassword from './Components/ForgotPassword';
+import ResetPasswordPage from './Components/ResetPasswordPage';
 
 
 const App = () => {
@@ -11,10 +14,14 @@ const App = () => {
     <Router>
       <div className="App">
         <Navbar />
+        
         <Routes> {}
+          <Route path='/' element={<Home/>} />
           <Route path="/login" element={<Login />} /> {/* Use element prop to render components */}
           <Route path="/register" element={<Register />}/>
-          <Route path="/about" element={<About />}/>
+          <Route path="/about" element={<Home />}/>
+          <Route path="/forgot-password" element={<ForgotPassword/>}/>
+          <Route path='/resetpassword' element={<ResetPasswordPage/>}/>
         </Routes>
       </div>
     </Router>
