@@ -11,7 +11,11 @@ function Signup() {
         profile_name: '',
         confirmPassword: '' 
     });
-    const [passwordError, setPasswordError] = useState(''); 
+    const [passwordError, setPasswordError] = useState('');
+    const [feedbackMessage, setFeedbackMessage] = useState({ message: '', isError: false });
+    // State to toggle password visibility
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -48,18 +52,16 @@ function Signup() {
             body: JSON.stringify(payload),
         })
         .then((response) => {
-            console.log(response);
             if (response.ok) {
-                console.log('Donor added!');
-                alert('Donor Registered Successfully.');
+                setFeedbackMessage({ message: 'Donor Registered Successfully.', isError: false });
                 navigate('/');
             } else {
-                alert('Already Donor Exists!.');
-                navigate('/signup')
+                setFeedbackMessage({ message: 'Already Donor Exists!', isError: true });
             }
         })
         .catch((error) => {
-          console.error(error);
+            console.error(error);
+            setFeedbackMessage({ message: 'An error occurred. Please try again.', isError: true });
         });
     };
 
@@ -71,36 +73,35 @@ function Signup() {
           <div className="form-section color-section">
             <h1 data-testid='signup-header'>Signup Donor!</h1>
             <form onSubmit={handleSubmit}>
-              <input 
-                type="text" 
-                className="profile_name"
-                name="profile_name" 
-                placeholder="Full Name" 
-                onChange={handleInputChange} 
-              />
-              <input 
-                type="text" 
-                className="username"
-                name="email" 
-                placeholder="Enter Email" 
-                onChange={handleInputChange} 
-              />
-              <input 
-                type="password" 
-                className="password"
-                name="password" 
-                placeholder="Password" 
-                onChange={handleInputChange} 
-              />
-              <input 
-                type="password" 
-                className="password1"
-                name="confirmPassword" 
-                placeholder="Retype Password" 
-                onChange={handleInputChange} 
-              />
+              <input type="text" name="profile_name" placeholder="Full Name" onChange={handleInputChange} />
+              <input type="text" name="email" placeholder="Enter Email" onChange={handleInputChange} />
+              <div className="password-input-container">
+                <input 
+                  type={showPassword ? "text" : "password"}
+                  name="password" 
+                  placeholder="Password" 
+                  onChange={handleInputChange} 
+                />
+                <button type="button" onClick={() => setShowPassword(!showPassword)}>
+                  {showPassword ? "Hide" : "Show"}
+                </button>
+              </div>
+              <div className="password-input-container">
+                <input 
+                  type={showConfirmPassword ? "text" : "password"}
+                  name="confirmPassword" 
+                  placeholder="Retype Password" 
+                  onChange={handleInputChange} 
+                />
+                <button type="button" onClick={() => setShowConfirmPassword(!showConfirmPassword)}>
+                  {showConfirmPassword ? "Hide" : "Show"}
+                </button>
+              </div>
               {passwordError && <p style={{ color: 'red' }}>{passwordError}</p>}
               <button type="submit" data-testid='signup-button'>Sign Up</button>
+              {feedbackMessage.message && (
+                <p style={{ color: feedbackMessage.isError ? 'red' : 'green' }}>{feedbackMessage.message}</p>
+              )}
               <div className="signup-text">
                 Already have an account? <Link to="/">Login</Link>
               </div>
