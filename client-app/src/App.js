@@ -1,29 +1,27 @@
 import React, { useState } from 'react';
+import DonationForm from '/Users/brijithatialu/IdeaProjects/material-donor-mutual-assist/client-app/src/DonationForm.js';
+import LoginForm from '/Users/brijithatialu/IdeaProjects/material-donor-mutual-assist/client-app/src/LoginForm.js';
 
-function DonationForm() {
-  const [isDonationSubmitted, setIsDonationSubmitted] = useState(false);
+function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const handleDonationSubmit = async () => {
-    // Logic to submit donation request to the backend
-    // Upon successful submission, set isDonationSubmitted to true
-    setIsDonationSubmitted(true);
+  // Function to handle successful login
+  const handleLoginSuccess = () => {
+    setIsLoggedIn(true);
   };
 
   return (
-    <div>
-      {!isDonationSubmitted ? (
-        <div>
-          {/* Donation form UI */}
-          <button onClick={handleDonationSubmit}>Submit Donation</button>
-        </div>
+    <div className="App">
+      {/* Conditional rendering based on login state */}
+      {isLoggedIn ? (
+        // If user is logged in, render the DonationForm
+        <DonationForm />
       ) : (
-        <div>
-          <p>Thank you for your donation!</p>
-          {/* Display details of the donated materials */}
-        </div>
+        // If user is not logged in, render the LoginForm
+        <LoginForm onLoginSuccess={handleLoginSuccess} />
       )}
     </div>
   );
 }
 
-export default DonationForm;
+export default App;
