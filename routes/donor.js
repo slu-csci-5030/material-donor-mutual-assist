@@ -2,8 +2,9 @@ import express from 'express'
 import DList from '../datafiles/DonorData.json' with {type: 'json'}
 const router = express.Router()
 
-router.get('/', (req, res) => {
-  res.send('UserList List of users')
+router.get('/', async (req, res) => {
+  const donorList = DList.DonorList
+  res.json(donorList).status(200)
 })
 
 router.get('/getmessage/:name', (req, res) => {
