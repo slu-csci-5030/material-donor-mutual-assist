@@ -4,7 +4,6 @@ import LoginPage from './LoginPage';
 import { BrowserRouter } from 'react-router-dom';
 import '@testing-library/jest-dom/extend-expect';
 
-
 describe('LoginPage Component', () => {
     test('renders without crashing', () => {
         render(<BrowserRouter><LoginPage /></BrowserRouter>);

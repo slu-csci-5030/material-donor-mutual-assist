@@ -45,14 +45,15 @@ Make Sure you are in the client-app directory
 
 2. **Start the Development Server**: Run `npm start` to start the development server. This will launch the application in your default web browser.
 
+
 ## Testing the Application
 
 To test the application, follow these steps:
 
+
 1. **Run Tests**: Run `npm test` to execute the test suite. This will run all test cases and provide feedback on their success or failure.
 
 2. **View Test Results**: After running the tests, the test runner will display the results in your terminal. Failed tests will provide information about what went wrong.
-
 
 
 
