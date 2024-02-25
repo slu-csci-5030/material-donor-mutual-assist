@@ -1,6 +1,6 @@
 Fixes #50
 
-I have created a prototype form for material donor registration
+# Created a prototype form for material donor registration
 
 Below is the link of the material donor registration form
 
