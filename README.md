@@ -8,7 +8,7 @@ Below is the link of the material donor registration form
 
 Purpose:
 
-Clearly state that the form is for material donation registration, streamlining the donation process.
+the form is for material donation registration, streamlining the donation process.
 Key Objectives:
 
 Streamline donation process.
