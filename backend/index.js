@@ -8,6 +8,8 @@ const port = 5000
 
 app.use(cors())
 app.use(express.json())
+const userRoutes = require('./routes/userRoutes');
+app.use('/api/users', userRoutes);
 
 // Available Routes
 app.use('/api/auth', require('./routes/auth'))
