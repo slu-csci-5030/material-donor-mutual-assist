@@ -42,26 +42,26 @@ describe('Register Component', () => {
 
   
 
-  // test('handles form submission correctly with valid credentials', async () => {
-  //   const fakeAuthToken = 'fakeAuthToken';
-  //   jest.spyOn(window, 'fetch').mockResolvedValueOnce({
-  //     json: () => Promise.resolve({ success: true, authtoken: fakeAuthToken }),
-  //   });
+  test('handles form submission correctly with valid credentials', async () => {
+    const fakeAuthToken = 'fakeAuthToken';
+    jest.spyOn(window, 'fetch').mockResolvedValueOnce({
+      json: () => Promise.resolve({ success: true, authtoken: fakeAuthToken }),
+    });
 
-  //   const { getByLabelText, getByText } = render(<Register />);
+    const { getByLabelText, getByText } = render(<Register />);
 
-  //   const nameInput = getByLabelText('Name');
-  //   const emailInput = getByLabelText('Email address');
-  //   const passwordInput = getByLabelText('Password');
-  //   const submitButton = getByText('Register');
+    const nameInput = getByLabelText('Name');
+    const emailInput = getByLabelText('Email address');
+    const passwordInput = getByLabelText('Password');
+    const submitButton = getByText('Register');
 
-  //   fireEvent.change(nameInput, { target: { value: 'Random' } });
-  //   fireEvent.change(emailInput, { target: { value: 'email1@gmail.com' } });
-  //   fireEvent.change(passwordInput, { target: { value: 'password123' } });
-  //   fireEvent.click(submitButton);
+    fireEvent.change(nameInput, { target: { value: 'Random' } });
+    fireEvent.change(emailInput, { target: { value: 'email1@gmail.com' } });
+    fireEvent.change(passwordInput, { target: { value: 'password123' } });
+    fireEvent.click(submitButton);
 
-  //   await waitFor(() => expect(localStorage.getItem('token')).toEqual(null));
-  //   expect(window.location.href).toBe('http://localhost/');
-  // });
+    await waitFor(() => expect(localStorage.getItem('token')).toEqual(null));
+    expect(window.location.href).toBe('http://localhost/');
+  });
 
 });
