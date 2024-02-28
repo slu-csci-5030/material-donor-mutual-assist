@@ -48,8 +48,8 @@ describe('Login Component', () => {
     const passwordInput = getByLabelText('Password');
     const submitButton = getByText('Submit');
 
-    fireEvent.change(emailInput, { target: { value: 'email@gmail.com' } });
-    fireEvent.change(passwordInput, { target: { value: 'password' } });
+    fireEvent.change(emailInput, { target: { value: 'email1@gmail.com' } });
+    fireEvent.change(passwordInput, { target: { value: 'password123' } });
     fireEvent.click(submitButton);
 
     await waitFor(() => expect(localStorage.getItem('token')).toEqual(fakeAuthToken));
