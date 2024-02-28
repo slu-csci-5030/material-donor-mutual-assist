@@ -2,7 +2,7 @@ import app from '../app'
 import supertest from 'supertest'
 import Data from '../datafiles/DonorData.json'
 
-describe('Get Users', () => {
+describe('Get User Message', () => {
   it('Should respond with 200 status code: ', async () => {
     const response = await supertest(app).get('/')
     expect(response.statusCode).toBe(200)
@@ -14,7 +14,7 @@ describe('Get Users', () => {
   })
   it('Should display the list of donor from the sample dataset', async () => {
     const response = await supertest(app).get('/donor/')
-    expect(response.body).toStrictEqual(Data.DonorList)
+    expect(response.body).toStrictEqual(Data)
     expect(response.status).toBe(200)
   })
 })
