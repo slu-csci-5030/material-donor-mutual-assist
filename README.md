@@ -1,2 +1,2 @@
 # material-donor-mutual-assist
-This is the repository for Material Donor Mutual Assist project.
+I this I designed an ER diagram and tables and their relations.
