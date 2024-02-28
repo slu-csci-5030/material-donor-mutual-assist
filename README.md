@@ -10,3 +10,5 @@ who benefit from the donation, will be invited to participate in expressing thei
 # Exchange of pictures:
 upload pictures that demonstrate how the donation has improved their lives in addition to messages. Contributors will be able to see their concrete outcomes through these graphic representations
 --by facilitating direct communication and personal expression between receivers and donors we can have deeper coonection
+# Sending an automatic reminder email to Doner after process
+Sending an automatic reminder as a text message to the donor would be more benefit,as every time opening the open looking regarding the mail is not possible for most if we send an automatic message through the mobile number of the doners it would be easy to them 
