@@ -1,3 +1,4 @@
+Fixes #50
 # material-donor-mutual-assist
 This is the repository for Material Donor Mutual Assist project.
 # Created a updated prototype form for material donor registration using figma
