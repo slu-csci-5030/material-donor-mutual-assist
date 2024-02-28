@@ -3,7 +3,7 @@ name: Push Updated Docker Image
 on:
   push:
     branches:
-      - get-api-call-donors-SravyaPadala-240225
+      - add_or_update_donorlist-SravyaPadala-240227
 
 jobs:
   test_and_build:
