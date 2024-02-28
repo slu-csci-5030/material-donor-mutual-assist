@@ -19,11 +19,14 @@ router.post('/createuser', [
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
   }
+  
   try {
-    // Check whether the user with this email exists already
+    //Check whether the user with this email exists already
+    let success = false;
     let user = await User.findOne({ email: req.body.email });
     if (user) {
       return res.status(400).json({ error: "Sorry a user with this email already exists" })
+      success = false
     }
     const salt = await bcrypt.genSalt(10);
     const secPass = await bcrypt.hash(req.body.password, salt);
@@ -40,12 +43,13 @@ router.post('/createuser', [
       }
     }
     const authtoken = jwt.sign(data, JWT_SECRET);
-
+    success = true
 
     // res.json(user)
     res.json({ authtoken })
 
   } catch (error) {
+    success = false
     console.error(error.message);
     res.status(500).send("Internal Server Error");
   }
@@ -93,6 +97,34 @@ router.post('/login', [
   }
 
 
+});
+
+router.post('/resetpassword', [
+  body('email', 'Enter a valid email').isEmail(),
+  body('password', 'New password must be at least 5 characters').isLength({ min: 5 }),
+], async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    // Find user by email
+    let user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Hash the new password
+    const salt = await bcrypt.genSalt(10);
+    const newHashedPassword = await bcrypt.hash(password, salt);
+
+    // Update user's password
+    user.password = newHashedPassword;
+    await user.save();
+
+    res.json({ message: "Password reset successfully" });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error");
+  }
 });
 
 

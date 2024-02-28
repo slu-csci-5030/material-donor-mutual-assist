@@ -1,8 +1,11 @@
 import React, {useState} from 'react'
+import { Link } from 'react-router-dom';
+//import { useNavigate } from 'react-router-dom'
 
 
 const Login = (props) => {
     const [credentials, setCredentials] = useState({email: "", password: ""}) 
+    //let history = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -36,7 +39,7 @@ const Login = (props) => {
                 <div className="mb-3">
                     <label htmlFor="email" className="form-label">Email address</label>
                     <input type="email" className="form-control" value={credentials.email} onChange={onChange} id="email" name="email" aria-describedby="emailHelp" />
-                    <div id="emailHelp" className="form-text">We'll never share your email with anyone else..</div>
+                    <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
                 </div>
                 <div className="mb-3">
                     <label htmlFor="password" className="form-label">Password</label>
@@ -44,6 +47,7 @@ const Login = (props) => {
                 </div>
 
                 <button type="submit" className="btn btn-primary">Submit</button>
+                <Link to="/forgot-password" className="btn btn-link">Forgot Password?</Link> {/* Link to Forgot Password page */}
             </form>
         </div>
     )
