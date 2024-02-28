@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 
 
 const Login = (props) => {
-    const [credentials, setCredentials] = useState({name: "",email: "", password: ""})
+    const [credentials, setCredentials] = useState({email: "", password: ""})
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -11,7 +11,7 @@ const Login = (props) => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({name: credentials.name, email: credentials.email, password: credentials.password})
+            body: JSON.stringify({email: credentials.email, password: credentials.password})
         });
         const json = await response.json()
         localStorage.setItem('token', json.authtoken);
