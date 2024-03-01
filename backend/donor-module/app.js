@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+<<<<<<< HEAD
 // added
 const nodemailer = require('nodemailer');
 
@@ -11,6 +12,11 @@ var usersRouter = require('./routes/users');
 var donar_module_router = require('./routes/donar-module');
 var submitformRouter = require('./routes/submit-form');
 
+=======
+
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
+>>>>>>> d8da1b25cb2e90435e2e9e6c97ace8b20509886b
 
 var app = express();
 
@@ -26,6 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+<<<<<<< HEAD
 app.use('/donar-module', donar_module_router);
 // app.post('/submit-form', (req, res) => {
 //   // Process the form data here
@@ -39,6 +46,8 @@ app.use('/donar-module', donar_module_router);
 // });
 
 app.use('/submit-form', submitformRouter);
+=======
+>>>>>>> d8da1b25cb2e90435e2e9e6c97ace8b20509886b
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

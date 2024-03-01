@@ -5,14 +5,22 @@
  */
 
 var app = require('../app');
+<<<<<<< HEAD
 var debug = require('debug')('donar-module:server');
+=======
+var debug = require('debug')('donor-module:server');
+>>>>>>> d8da1b25cb2e90435e2e9e6c97ace8b20509886b
 var http = require('http');
 
 /**
  * Get port from environment and store in Express.
  */
 
+<<<<<<< HEAD
 var port = normalizePort(process.env.PORT || '4000');
+=======
+var port = normalizePort(process.env.PORT || '5001');
+>>>>>>> d8da1b25cb2e90435e2e9e6c97ace8b20509886b
 app.set('port', port);
 
 /**

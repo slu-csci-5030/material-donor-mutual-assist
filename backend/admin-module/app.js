@@ -5,10 +5,14 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
+<<<<<<< HEAD
 var usersRouter = require('./routes/users');
 var donarListRouter = require('./routes/donars_List');
 var donar_module_router = require('./routes/donar-module');
 var submitformRouter = require('./routes/submit-form');
+=======
+var donorsRouter = require('./routes/crud_donors');
+>>>>>>> d8da1b25cb2e90435e2e9e6c97ace8b20509886b
 
 var app = express();
 
@@ -23,10 +27,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+<<<<<<< HEAD
 app.use('/users', usersRouter);
 app.use('/donorsList', donarListRouter);
 app.use('/donar-module', donar_module_router);
 app.use('/submit-form', submitformRouter);
+=======
+app.use('/donors', donorsRouter);
+>>>>>>> d8da1b25cb2e90435e2e9e6c97ace8b20509886b
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

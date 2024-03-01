@@ -1,1 +1,6 @@
+<<<<<<< HEAD
 *.log
+=======
+node_modules
+package-lock.json
+>>>>>>> d8da1b25cb2e90435e2e9e6c97ace8b20509886b
