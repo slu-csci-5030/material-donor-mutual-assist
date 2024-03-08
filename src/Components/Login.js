@@ -32,6 +32,7 @@ const Login = (props) => {
 
         if (json.success) {
             localStorage.setItem('token', json.authtoken);
+            localStorage.setItem('name', json.name);
             window.location.href = '/About';
         } else {
             setErrorMessage("Invalid credentials");

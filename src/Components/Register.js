@@ -36,7 +36,13 @@ const Register = () => {
             },
             body: JSON.stringify({ name: credentials.name, email: credentials.email, password: credentials.password })
         });
-    
+
+        const json = await response.json();
+        if (true) {
+            localStorage.setItem('token', json.authtoken);
+            localStorage.setItem('name', json.name);
+            window.location.href = '/About';
+        }    
         try {
             const json = await response.json();
             console.log(json);
