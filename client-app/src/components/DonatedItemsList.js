@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
-import '../css/DonatedItemsList.css'; // Import your CSS file for styling
+import { Link } from 'react-router-dom';
+import '../css/DonatedItemsList.css';
 
 function DonatedItemsList() {
   // Sample data for demonstration
@@ -29,7 +29,7 @@ function DonatedItemsList() {
         {donatedItems.map((item, index) => (
           <tr key={item.id}>
             <td>{index + 1}</td>
-            <td><Link to={`/item/${item.id}`}>{item.id}</Link></td> {/* Wrap item_id in Link */}
+            <td><Link to={`/item/${item.id}`} state={{ itemInfo: item }}>{item.id}</Link></td>
             <td>{item.name}</td>
             <td>{item.donor}</td>
             <td>{item.date}</td>
