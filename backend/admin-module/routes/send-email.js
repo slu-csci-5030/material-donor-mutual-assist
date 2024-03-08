@@ -19,7 +19,7 @@ async function connectToNATS() {
     return nc;
 }
 
-// Handle connection errors
+
 connectToNATS()
     .then((nc) => {
         console.log("NATS connection resolved");
