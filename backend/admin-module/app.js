@@ -45,4 +45,8 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+const resendEmailRouter = require('./routes/resend-email');
+// Add the resend-email route
+app.use('/resend-email', resendEmailRouter);
+
 module.exports = app;
