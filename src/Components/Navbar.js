@@ -30,7 +30,8 @@ const Navbar = () => {
           </ul>
         </div>
         <div>
-          <span>Welcome {user}!</span>
+          {/* <span>Welcome {user}!</span> */}
+          <span>Welcome !</span>
           <button onClick={handleLogout}>Logout</button> 
         </div>
       </div>
