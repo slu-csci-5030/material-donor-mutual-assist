@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import '../css/AdminHeader.css'; // Import your CSS file for styling
 import { FaSearch } from 'react-icons/fa'; // Import search icon from react-icons/fa
+import { FaIconName } from 'react-icons/fa';
+
 
 function AdminHeader({ onSearch, onSort, onOpenFilters }) {
   const [searchInput, setSearchInput] = useState('');

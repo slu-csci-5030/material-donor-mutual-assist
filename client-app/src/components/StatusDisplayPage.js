@@ -17,7 +17,8 @@ const StatusDisplayPage = () => {
       refurbished: false,
       received: false,
       sold: false
-    }
+    },
+    image: null
   });
 
   // Simulating API call to fetch donor data
@@ -45,6 +46,15 @@ const StatusDisplayPage = () => {
     setDonorInfo({
       ...donorInfo,
       status: { ...donorInfo.status, [name]: checked }
+    });
+  };
+
+  // Function to handle file upload
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    setDonorInfo({
+      ...donorInfo,
+      image: URL.createObjectURL(file) // Generate a temporary URL for the selected image
     });
   };
 
@@ -126,6 +136,21 @@ const StatusDisplayPage = () => {
           />
           Sold
         </label>
+        <br></br>
+        <label>
+          Upload Image of current Status:
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleImageUpload}
+          />
+        </label>
+        <br></br>
+        {/* Display uploaded image */}
+        {donorInfo.image && (
+          <img src={donorInfo.image} alt="Uploaded" style={{ maxWidth: '100%', maxHeight: '200px' }} />
+        )}
+        <br />
         <br />
         <button type="button">Cancel</button>
         <br />
