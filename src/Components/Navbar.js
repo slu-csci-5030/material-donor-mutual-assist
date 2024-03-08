@@ -2,6 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom'; // Import Link component from React Router
 
 const Navbar = () => {
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('name');
+    window.location.href = "/";
+  }  
   return (
     <nav className="navbar navbar-expand-lg" style={{ backgroundColor: "white", height: "60px" }}>
       <div className="container-fluid">
@@ -23,6 +28,10 @@ const Navbar = () => {
               <Link className="nav-link" to="/about">About</Link> {/* Example link for About page */}
             </li>
           </ul>
+        </div>
+        <div>
+          <span>Welcome {user}!</span>
+          <button onClick={handleLogout}>Logout</button> 
         </div>
       </div>
     </nav>
