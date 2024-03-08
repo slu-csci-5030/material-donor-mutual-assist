@@ -1,41 +1,54 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-//import { useNavigate } from 'react-router-dom'
-
 
 const Login = (props) => {
-    const [credentials, setCredentials] = useState({email: "", password: ""}) 
-    //let history = useNavigate();
+    const [credentials, setCredentials] = useState({ email: "", password: "" });
+    const [captcha, setCaptcha] = useState("");
+    const [captchaValue, setCaptchaValue] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
+
+    const generateCaptcha = () => {
+        const randomCaptcha = Math.random().toString(36).substring(7);
+        setCaptcha(randomCaptcha);
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        // Validate CAPTCHA
+        if (captchaValue.toLowerCase() !== captcha.toLowerCase()) {
+            setErrorMessage("Incorrect CAPTCHA. Please try again.");
+            return;
+        }
+
         const response = await fetch("http://localhost:5000/api/auth/login", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({email: credentials.email, password: credentials.password})
+            body: JSON.stringify({ email: credentials.email, password: credentials.password })
         });
-        const json = await response.json()
-        console.log(json);
-        if (json.success){
-            // Save the auth token and redirect
-            localStorage.setItem('token', json.authtoken); 
-            window.location.href = '/About'
+        const json = await response.json();
 
+        if (json.success) {
+            localStorage.setItem('token', json.authtoken);
+            window.location.href = '/About';
+        } else {
+            setErrorMessage("Invalid credentials");
         }
-        else{
-            alert("Invalid credentials");
-        }
-    }
+    };
 
-    const onChange = (e)=>{
-        setCredentials({...credentials, [e.target.name]: e.target.value})
-    }
+    const onChange = (e) => {
+        setCredentials({ ...credentials, [e.target.name]: e.target.value });
+    };
+
+    const handleCaptchaChange = (e) => {
+        setCaptchaValue(e.target.value);
+    };
 
     return (
         <div>
-            <form  onSubmit={handleSubmit} className='my-5 container'>
+            <form onSubmit={handleSubmit} className='my-5 container'>
                 <div className="mb-3">
                     <label htmlFor="email" className="form-label">Email address</label>
                     <input type="email" className="form-control" value={credentials.email} onChange={onChange} id="email" name="email" aria-describedby="emailHelp" />
@@ -45,12 +58,19 @@ const Login = (props) => {
                     <label htmlFor="password" className="form-label">Password</label>
                     <input type="password" className="form-control" value={credentials.password} onChange={onChange} name="password" id="password" />
                 </div>
+                <div className="mb-3">
+                    <label htmlFor="captcha" className="form-label">CAPTCHA: {captcha}</label>
+                    <input type="text" className="form-control" value={captchaValue} onChange={handleCaptchaChange} id="captcha" name="captcha" />
+                </div>  
+                <button type="button" className="btn btn-secondary" onClick={generateCaptcha} style={{height: "25px", padding: "4px"}}><p style={{fontSize: "12px"}}>Refresh CAPTCHA</p></button><br/><br/>
+                {errorMessage && <div className="alert alert-danger" role="alert">{errorMessage}</div>}
 
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <button type="submit" className="btn btn-primary" disabled={!captchaValue}>Submit</button>
                 <Link to="/forgot-password" className="btn btn-link">Forgot Password?</Link> {/* Link to Forgot Password page */}
+            
             </form>
         </div>
-    )
-}
+    );
+};
 
-export default Login
+export default Login;
