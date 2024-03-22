@@ -26,6 +26,7 @@
     "nodemailer": "^6.9.10",
     "npx": "^10.2.2",
     "path-browserify": "^1.0.1",
+    "pg": "^8.11.3",
     "postcss": "^8.4.35",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
