@@ -22,5 +22,16 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.get('/:name', async (req, res) => {
+  try{
+    const name = req.params.name;
+    const admin = await admin.findAll({ where: {name}});
+    res.status(200).json(admin)
+  }catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Error fetching admin by name' });
+  }
+});
+
 
 module.exports = router;
