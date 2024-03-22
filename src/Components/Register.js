@@ -2,8 +2,23 @@ import React, { useState } from 'react';
 
 const Register = () => {
     const [credentials, setCredentials] = useState({ name: "", email: "", password: "" });
+    const [passwordStrength, setPasswordStrength] = useState("weak");
     const [successMessage, setSuccessMessage] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
+
+    const handleChange = (e) => {
+        const password = e.target.value;
+        setCredentials({ ...credentials, password });
+
+        // Determine password strength
+        if (password.length < 5) {
+            setPasswordStrength("weak");
+        } else if (password.length >= 5 && password.length <= 8) {
+            setPasswordStrength("medium");
+        } else {
+            setPasswordStrength("strong");
+        }
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -44,27 +59,27 @@ const Register = () => {
             setErrorMessage("An error occurred. Please try again.");
         }
     };
-       
-
-    const onChange = (e) => {
-        setCredentials({ ...credentials, [e.target.name]: e.target.value });
-    };
 
     return (
-        <div>
-            <form onSubmit={handleSubmit} className='my-5 container'>
+        <div className="container mt-5">
+            <h2>Register</h2>
+            <form onSubmit={handleSubmit} className='my-5'>
                 <div className="mb-3">
                     <label htmlFor="name" className="form-label">Name</label>
-                    <input type="text" className="form-control" value={credentials.name} onChange={onChange} id="name" name="name" aria-describedby="emailHelp" />
+                    <input type="text" className="form-control" value={credentials.name} onChange={(e) => setCredentials({ ...credentials, name: e.target.value })} id="name" name="name" aria-describedby="emailHelp" />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="email" className="form-label">Email address</label>
-                    <input type="email" className="form-control" value={credentials.email} onChange={onChange} id="email" name="email" aria-describedby="emailHelp" />
+                    <input type="email" className="form-control" value={credentials.email} onChange={(e) => setCredentials({ ...credentials, email: e.target.value })} id="email" name="email" aria-describedby="emailHelp" />
                     <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
                 </div>
-                <div className="mb-3">
+                <div className="mb-3 position-relative">
                     <label htmlFor="password" className="form-label">Password</label>
-                    <input type="password" className="form-control" value={credentials.password} onChange={onChange} name="password" id="password" />
+                    <input type="password" className="form-control" value={credentials.password} onChange={handleChange} name="password" id="password" />
+                    <div className="password-strength-meter" style={{display: 'flex'}}>
+                    <p className='my-3'>Password Strength:</p>  <p className={`text-${passwordStrength} my-3 mx-2`} style={{ marginTop: '5px', textAlign: 'center', fontWeight: 'bold' }}>{passwordStrength.toUpperCase()}</p>
+                    </div>
+
                 </div>
                 {errorMessage && <div className="alert alert-danger" role="alert">{errorMessage}</div>}
                 {successMessage && <div className="alert alert-success" role="alert">{successMessage}</div>}
