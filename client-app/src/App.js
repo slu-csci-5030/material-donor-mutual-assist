@@ -9,7 +9,7 @@ import ResetPasswordPage from './Components/ResetPasswordPage';
 import StatusDisplayPage from './Components/StatusDisplayPage';
 import AdminHeader from './Components/AdminHeader';
 import DonatedItemsList from './Components/DonatedItemsList';
-
+import MaterialDonationForm from './Components/MaterialDonationForm';
 
 const App = () => {
   return (
@@ -29,6 +29,7 @@ const App = () => {
             <AdminHeader />
             <DonatedItemsList />
           </>} />
+          <Route path="/material-donation" element={<MaterialDonationForm />} />
         </Routes>
       </div>
     </Router>
