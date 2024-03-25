@@ -38,14 +38,15 @@
     **Regular Demos**: After each development iteration, we'll showcase a working demo of the software to the client. This live demonstration allows the users to provide immediate feedback and ensure the product aligns with their vision.  
 
     **Post-Release Feedback**: We'll also collect client feedback after each software release. This helps us understand how the product functions in a real-world setting and identify any areas for improvement.
-    We'll use GitHub Discussions to track all feedback interactions from the clients. After each demo and release, a dedicated discussion thread will be created (see example image below). This centralized location keeps everything organized for reference.  
+    We'll use GitHub Discussions to track all feedback interactions from the clients. After each demo and release, a dedicated discussion thread will be created (see example image below). This keeps everything at one place for reference.
+
+  <img width="468" alt="image" src="https://github.com/slu-csci-5030/material-donor-mutual-assist/assets/156231102/c183e257-90c0-474b-b35e-650ae89675dc">
+
 
     Beyond this feedback, we'll use Qualtrics to gather Customer Satisfaction (CSAT) ratings and detailed responses. This allows us to get a better understanding of client satisfaction level and identify any specific areas where we can enhance the product. 
     A preview of a sample CSAT survey is available here: https://slu.az1.qualtrics.com/jfe/preview/previewId/eec315a3-6721-4bf8-9c69-20d26bb52162/SV_1C6ArXDkJ0wq8IK?Q_CHL=preview&Q_SurveyVersionID=current  
 
     All feedback received, whether through demos, discussions, or surveys, will be analyzed to identify potential enhancements, prioritize bug fixes, and create actionable issues directly within GitHub.   
-
-    By implementing this comprehensive approach, we can ensure continuous improvement.
 
 
 ## Task-8 : Key performance indicators (KPIs) for the project
