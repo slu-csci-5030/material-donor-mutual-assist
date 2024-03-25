@@ -1,101 +1,96 @@
 # Information Radiators for Material Donor Mutual Assist
-
-## Task-1 : Current sprint progress (e.g., burndown chart)
-
-- Assigned To :
-- Explain :
-
-## Task-2 : Team member availability and workload
-
-- Assigned To :
-- Explain :
-
-## Task-3 : Number of open, closed, and in-progress tasks
-
-- Assigned To :
-- Explain :
-
-## Task-4 : Cumulative flow diagram
-
-- Assigned To :
-- Explain :
-
-## Task-5 : Code quality metrics (e.g., code coverage, code smells)
-
-- Assigned To :
-- Explain :
-
-## Task-6 : Build and deployment status
-
-- Assigned To :
-- Explain :
-
-## Task-7 : Customer feedback and satisfaction ratings
-
-- Assigned To :
-- Explain :
-
-## Task-8 : Key performance indicators (KPIs) for the project
-
-- Assigned To :
-- Explain :
-
-## Task-9 : Team goals and objectives
-
-- Assigned To :
-- Explain :
-
-## Task-10: Upcoming milestones and deadlines
-
-- Assigned To :
-- Explain :
-
-## Task-11: Risk assessment and mitigation strategies
-
-- Assigned To :
-- Explain :
-
-## Task-12: Feature roadmap and backlog prioritization
-
-- Assigned To :
-- Explain :
-
-## Task-13: Incident and bug tracking
-
-- Assigned To :
-- Explain :
-
-## Task-14: Team celebrations and recognitions
-
-- Assigned To :
-- Explain :
-
-## Task-15: External dependencies and blockers
-
-- Assigned To :
-- Explain :
-
-## Task-16: Communication channels and contact information
-
-- Assigned To :
-- Explain :
-
-## Task-17: Continuous integration/delivery pipeline status
-
-- Assigned To :
-- Explain :
-
-## Task-18: User story mapping
-
-- Assigned To :
-- Explain :
-
-## Task-19: Resource allocation and budget tracking
-
-- Assigned To :
-- Explain :
-
-## Task-20: Project velocity and throughput
-
-- Assigned To :
-- Explain :
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Information Radiator</title>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <div class="dashboard">
+            <!-- Top row -->
+            <div class="block large" id="currentSprintProgress">
+                Current Sprint Progress
+            </div>
+            <div class="block medium" id="teamGoals">Goals & Objectives</div>
+            <div class="block medium" id="buildDeployStatus">
+                Build & Deploy Status
+            </div>
+ 
+            <!-- Middle row -->
+            <div class="block medium" id="teamContribution">
+                <div class="block medium" id="teamContribution" style="height: 300px; overflow: auto;">
+                    <table>
+                            <tr>
+                                Team Contribution & Workload
+                            </tr>
+                           
+                            <tr >
+                               
+                                <th>Members</th>
+                                <th>No. of Issues Worked on</th>
+                            </tr>
+                            <tr>
+                                <td>Deepak</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>Manohar</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>Sravya</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>Krishnakanth</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>siri</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>Adithya</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>Rohnath</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>Brijitha</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>Rohith</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>vineeth</td>
+                                <td>2</td>
+                            </tr>
+                    </table>
+                </div>
+               
+            </div>
+            <div class="block medium" id="backlogPrioritization">
+                Backlog Prioritization
+            </div>
+            <div class="block medium" id="incidentTracking">
+                Incident & Bug Tracking
+            </div>
+            <div class="block medium" id="userStoryMapping">User Story Mapping</div>
+ 
+            <!-- Bottom row -->
+            <div class="block small" id="communicationChannels">
+                Communication Channels
+            </div>
+            <div class="block large" id="teamCelebration">
+                Team Celebration & Recognition
+            </div>
+            <div class="block small" id="techStackPeek">Quick Peek on Tech Stack</div>
+        </div>
+    </body>
+</html>
