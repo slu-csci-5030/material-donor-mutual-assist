@@ -3,7 +3,8 @@ name: Docker Build and Push and run testcases
 on:
   push:
     branches:
-      - backend_yrlmanoharreddy
+      - main
+      - information-radiadors-yrlmanoharreddy
 
 jobs:
   build-and-test:
@@ -43,7 +44,7 @@ jobs:
 
       - name: Push Admin Module Docker image
         run: docker push yrlmanoharreddymeda/yrl-admin-module
-      
+
       - name: Push Donor Module Docker image
         run: docker push yrlmanoharreddymeda/yrl-donor-module
 
