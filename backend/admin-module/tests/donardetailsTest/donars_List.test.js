@@ -1,7 +1,7 @@
 const express = require('express');
 
 const supertest = require('supertest');
-const donarListRouter = require('../routes/donars_List');
+const donarListRouter = require('../routes/donor-details/donars_List');
 
 const app = express();
 app.use('/donorsList', donarListRouter);
