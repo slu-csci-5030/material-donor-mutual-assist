@@ -69,7 +69,7 @@
 
 - Assigned To : Krishnakanth Burugu
 - Explain :
-# Team Celebrations and Recognitions (Let's Celebrate Our Wins!)
+### Team Celebrations and Recognitions (Let's Celebrate Our Wins!)
 For this section, I wanted to create a space that truly celebrates our team's hard work and achievements. Here's what I came up with:
 Showcasing Victories:
 -	"High Fives" Wall: I propose dedicating a physical wall or a digital space (like a shared Google Sheet) as our "High Fives" Wall.  Here is the sample google sheet: 
@@ -94,7 +94,7 @@ By implementing these ideas, I believe we can create a culture of appreciation a
 
 - Assigned To : Krishnakanth Burugu
 - Explain :
-# Communication Channels and Contact Information (Staying Connected for MDMA)
+### Communication Channels and Contact Information (Staying Connected for MDMA)
 - Easy Access to Our MDMA Hub:
 For this section, I focused on providing clear and easy access to the communication tools and contact information we use for the MDMA Admin program check-in module for opt-in users 
 (#mdma-team-4).
