@@ -65,7 +65,7 @@
 |6\. |Resource Constraints |Delays in project delivery, reduced productivity |High |High |Conduct resource planning and allocation upfront. Communicate resource constraints early to stakeholders. |Project Manager |
 |7\. |Lack of User Adoption |Low user engagement, impact on project success |High |High |Involve end-users early in the design process. Provide comprehensive training and support resources. |User Experience Lead |
 |8\. |Regulatory Compliance Issues |Legal consequences, reputational damage |Medium |Medium |Stay informed about regulatory requirements. Conduct regular compliance checks and audits. |Compliance Officer |
-|` `9.|Testing Insufficiency |Undetected bugs, poor software quality, decreased user satisfaction. |Medium |High |- Implement comprehensive testing strategies including unit tests, integration tests, and QA testing. |QA Team |
+|9\.|Testing Insufficiency |Undetected bugs, poor software quality, decreased user satisfaction. |Medium |High |- Implement comprehensive testing strategies including unit tests, integration tests, and QA testing. |QA Team |
 | | | | | |- Automated testing for regression testing and continuous integration. | |
 | | | | | |- Conduct user acceptance testing to ensure the system meets user requirements. | |
 
