@@ -75,8 +75,7 @@
 - Assigned To : Yenkatarajalaxmimanohar Meda
 - Explain :
 - Objective:
-
-The objective of this documentation is to provide a comprehensive overview of the "External Dependency and Blockers" component implemented in our information radiator. This component focuses on visualizing the status of external dependencies and blockers affecting our project.
+  The objective of this documentation is to provide a comprehensive overview of the "External Dependency and Blockers" component implemented in our information radiator. This component focuses on visualizing the status of external dependencies and blockers affecting our project.
 
 Based on our discussions, we identified the "External Dependency and Blockers" component as essential for highlighting dependencies on external services and any blockers hindering project progress.
 
@@ -137,7 +136,7 @@ Owner: Yenkatarajalaxmimanohar Meda.
 - Work implemented in GitHub :
   Under "projects section" in our project repository
 
-  I created issues for the External dependencies and blockers and gave labels like External dependencies and Blockers. Upon creating the issue i created the project blocks and diving the project blocks into Todo, In progress, done and Blockers. I added the issues into project blocks to monotor the issues for the external dependencies and blocker.
+  I created issues for the External dependencies and blockers and gave labels like External dependencies and Blockers. Upon creating the issue i created the project blocks and dividing the project blocks into Todo, In progress, done and Blockers. I added the issues into project blocks to monotor the issues for the external dependencies and blocker.
 
 #### Instructions for Maintaining and Updating the Information Radiator:
 
@@ -174,6 +173,31 @@ Keep a record of past issues and their resolutions for reference and to track pa
 - Explain :
 
 ### Description :
+
+This component visualizes the status of the continuous integration/continuous delivery (CI/CD) pipeline, which automates the process of building, testing, and deploying code changes.
+It displays information about each stage of the pipeline, including build, test, and deployment phases.
+
+- Implementation Steps in Github Actions and code:
+
+#### Code changes : Created .github/workflow folder and added test.yml file to execute all steps automatically upon push like build, test and deploy.
+
+#### GitHub Actions: In Github actions i defined workflows to automate build, test, and deployment processes.
+
+#### Workflow Status Badge: Added a status badge to our repository's project documentation to display the overall status of the CI/CD pipeline. This badge reflects the latest workflow run status.
+
+#### Workflow Visualization: Using the Actions tab in our GitHub repository we can visualize the status and history of workflow runs. View details such as workflow duration, triggered events, and individual job outcomes.
+
+#### Notifications: Configured GitHub Actions to send notifications or status updates to my github registered email id upon completion or failure of pipeline runs. This ensures timely awareness of pipeline status.
+
+#### Workflow Logs: Review workflow logs and artifacts within GitHub to troubleshoot issues, analyze failures, and track deployment outcomes. GitHub provides detailed logs for each workflow run, aiding in debugging and resolution.
+
+- Maintenance and Updating:
+
+#### Regularly review and update external dependencies and blockers as new information becomes available.
+
+#### Monitor CI/CD pipeline status and performance, addressing any failures or issues promptly.
+
+#### Encourage collaboration and communication among team members to ensure accurate tracking and resolution of dependencies and pipeline issues.
 
 ## Task-18: User story mapping
 
