@@ -59,27 +59,27 @@ Very High severity     - 40%
 Low severity 	         - 10%
 moderate severity    - 20%
 
-**Data Security Risks:
+### Data Security Risks:
 
 Risk: Unauthorized access to sensitive data such as donor information or program assignments.
 Severity - low
 Mitigation: Implement robust authentication mechanisms, including multi-factor authentication for admin accounts. Encrypt sensitive data both in transit and at rest. Regularly audit user access permissions and conduct security training for staff members handling sensitive information.
-Email Delivery Risks:
+### Email Delivery Risks:
 
 Risk: Email delivery failures or delays leading to donors not receiving timely updates or acknowledgments.
 Severity – very High
 Mitigation: Utilize reliable email service providers with high deliverability rates and monitoring capabilities. Implement email delivery tracking and automated retry mechanisms for failed deliveries. Maintain a backup communication channel (e.g., SMS or phone calls) for critical updates to ensure donors are informed promptly.
-Program Assignment Errors:
+### Program Assignment Errors:
 
 Risk: Incorrect assignment of donated materials to the wrong program, leading to logistical challenges or donor dissatisfaction.
 Severity - high
 Mitigation: Implement validation checks and approval workflows for program assignments. Provide admin users with training and guidelines on proper program assignment procedures. Enable batch assignment options with confirmation prompts to minimize manual errors.
-Image Upload Issues:
+### Image Upload Issues:
 
 Risk: Difficulties or failures in uploading images for program-related activities, hindering transparency and donor engagement.
 Severity - moderate
 Mitigation: Implement robust image upload functionality with error handling and validation checks. Provide clear instructions and user-friendly interfaces for admins to upload images easily. Regularly test image upload functionality across different devices and browsers to ensure compatibility.
-User Error and Training Needs:
+### User Error and Training Needs:
 Risk: Admin users making errors due to lack of training or familiarity with system functionalities.
 Severity - low
 Mitigation: Provide comprehensive training sessions and documentation for admin users on system usage, best practices, and troubleshooting procedures. Implement user-friendly interfaces with tooltips, guided tours, and contextual help to assist users in performing tasks accurately. Offer ongoing support and refresher training sessions as needed to address evolving user needs.
