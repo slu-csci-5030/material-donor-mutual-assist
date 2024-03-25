@@ -170,8 +170,10 @@ Keep a record of past issues and their resolutions for reference and to track pa
 
 ## Task-17: Continuous integration/delivery pipeline status
 
-- Assigned To :
+- Assigned To : Yenkatarajalaxmimanohar Meda
 - Explain :
+
+### Description :
 
 ## Task-18: User story mapping
 
