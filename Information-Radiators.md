@@ -77,6 +77,7 @@ Things we should work on:
 Finalization of Development
 Deadline: Yet to 
 Description: Deadline for completing all development tasks and finalizing the project for deployment.
+
 -Period for evaluating project performance post-launch and identifying areas for improvement.
 
 ## Task-11: Risk assessment and mitigation strategies
