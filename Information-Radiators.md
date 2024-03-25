@@ -2,8 +2,50 @@
 
 ## Task-1 : Current sprint progress (e.g., burndown chart)
 
-- Assigned To :
+- Assigned To :Abhi Stephen 
 - Explain :
+  ### https://docs.google.com/document/d/10eaZOJYbU_WD74dY0OL73xmyag0_0IotXhGI2uwDj0c/edit
+  Current Sprint Progress
+Objective:
+The Current Sprint Progress component aims to visualize the progress of tasks and milestones within the current sprint for the Material Donor Mutual Assist project. It provides transparency and insight into the completion status of ongoing activities, enabling the team to track their progress effectively.
+Components:
+Completed Tasks:
+Implemented validation to prevent the creation of multiple accounts using the same email address.
+Documented all features and descriptions for the modules.
+Implemented Email Sending Functionality using Amazon SES.
+Integrated PostgreSQL Database for Backend Data Storage.
+Refactor test cases and document.
+Added GET by lastName functionality in the admin module.
+Integrated Postman for API Testing and Documentation.
+Tasks in Progress:
+Refactoring test cases.
+Implementing UI for Admin to View Donor Details.
+Assigning Donated Items to Programs available.
+Implementing Search Functionality in the DonatedItemsList Page.
+Exploring ways to create a robust email service without using nodemailer.
+Upcoming Tasks:
+Integrating AWS for Deployment Platform.
+Adding an Image Upload button of current status in the Status Display Page.
+Implementing Password Strength Indicator in Login Page.
+Implementing Material Donation Registration Form from Figma Prototype.
+Visualization:
+The Current Sprint Progress can be visualized using a burnup chart or a similar graph, where the x-axis represents time (sprint duration) and the y-axis represents the number of tasks or story points completed. Each task can be represented as a data point on the chart, showing its completion status over time.
+Interpretation
+Ideal Line: Provides a reference for the expected progress if work is completed at a constant rate.
+Actual Line: Compares the actual progress with the ideal progress, highlighting any deviations or discrepancies.
+Above Ideal Line: Indicates that work is being completed at a faster rate than expected.
+Below Ideal Line: Indicates that work is being completed at a slower rate than expected.
+Fluctuations: Fluctuations in the actual burndown line may indicate changes in work scope, team efficiency, or external factors impacting progress
+
+Benefits:
+Enables the team to track the completion status of tasks and milestones within the current sprint.
+Facilitates transparency and communication among team members regarding ongoing work.
+Helps in identifying bottlenecks or delays in task completion, allowing for timely adjustments and prioritization.
+
+This is the board created by me for my individual work in jira 
+
+### https://stephen-team-rs33ab.atlassian.net/jira/software/projects/SP/boards/1/reports/burndown?source=sidebar
+
 
 ## Task-2 : Team member availability and workload
 
