@@ -1,4 +1,4 @@
-const { calculateImpact } = require('../routes/donor-details/donar_Engagement');
+const { calculateImpact } = require('../../routes/donor-details/donar_Engagement');
 
 describe('Donor Engagement Component', () => {
   test('should correctly calculate impact for material donors', () => {
