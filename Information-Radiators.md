@@ -90,20 +90,19 @@ A feature roadmap is a high-level visual representation of the planned features 
 ### Feature Roadmap:
 It displays the major features or modules of the Donor Engagement system, arranged in a timeline or a phased approach.
 The roadmap has the following phases:
-Phase 1: Integration with B-Works' existing donor tracking system
-Phase 2: Donor data management and tracking
-Phase 3: Communication channels (emails, letters)
-Phase 4: Reporting and analytics
-Phase 5: User interface and experience
+1. Phase 1: Integration with B-Works' existing donor tracking system
+2. Phase 2: Donor data management and tracking
+3. Phase 3: Communication channels (emails, letters)
+4. Phase 4: Reporting and analytics
+5. Phase 5: User interface and experience
 ### Backlog Prioritization:
 It lists out all the specific tasks, requirements, and features that need to be implemented for each phase or module of the Donor Engagement system.
 These items in the backlog are prioritized based on the following factors :
-Dependencies: Tasks or features that are prerequisites for other items.
-Business value: Features that provide the highest value or impact for B-Works and their donors.
-Risk: Tasks or features that pose a higher risk or complexity.
-Effort: Estimated effort required for each item.
-The backlog items are categorized and color-coded based on their priority according to the phase/module they belong to.
-Progress indicators (e.g., percentages, burndown charts) could be included to show the completion status of each backlog item or phase.
+1. Dependencies: Tasks or features that are prerequisites for other items.
+2. Business value: Features that provide the highest value or impact for B-Works and their donors.
+3. Risk: Tasks or features that pose a higher risk or complexity.
+4. Effort: Estimated effort required for each item.
+The backlog items are categorized and color-coded based on their priority according to the phase/module they belong to. Progress indicators (e.g., percentages, burndown charts) could be included to show the completion status of each backlog item or phase.
 
 ## Task-13: Incident and bug tracking
 
