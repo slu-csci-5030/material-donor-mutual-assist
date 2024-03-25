@@ -8,7 +8,7 @@ on:
   pull_request:
     branches:
       - main
-      - backend_yrlmanoharreddy
+      - information-radiadors-yrlmanoharreddy
 
 jobs:
   lint:
