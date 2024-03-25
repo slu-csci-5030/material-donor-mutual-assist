@@ -54,7 +54,7 @@
 
 - Assigned To : Abhi Stephen
 - Explain :
-High severity              - 30%
+High severity          - 30%
 Very High severity     - 40%
 Low severity 	         - 10%
 moderate severity    - 20%
