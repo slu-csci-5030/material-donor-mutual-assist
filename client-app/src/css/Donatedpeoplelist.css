@@ -1,0 +1,11 @@
+.people-list {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .people-list th, .people-list td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
