@@ -1,0 +1,11 @@
+{
+  "name": "material-donor-mutual-assist",
+  "version": "1.0.0",
+  "description": "<!DOCTYPE html>\r <html lang=\"en\">\r     <head>\r         <meta charset=\"UTF-8\" />\r         <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\r         <title>Information Radiator</title>\r         <link rel=\"stylesheet\" href=\"styles.css\" />\r     </head>\r     <body>\r         <div class=\"dashboard\">\r             <!-- Top row -->\r             <div class=\"block large\" id=\"currentSprintProgress\">\r                 Current Sprint Progress\r             </div>\r             <div class=\"block medium\" id=\"teamGoals\">Goals & Objectives</div>\r             <div class=\"block medium\" id=\"buildDeployStatus\">\r                 Build & Deploy Status\r             </div>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
