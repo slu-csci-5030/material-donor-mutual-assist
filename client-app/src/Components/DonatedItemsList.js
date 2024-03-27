@@ -6,33 +6,27 @@ import '../css/DonatedItemsList.css';
 
 function DonatedItemsList() {
   const [searchInput, setSearchInput] = useState('');
+  const [programFilter, setProgramFilter] = useState('');
+  const [statusFilter, setStatusFilter] = useState('');
   const [filteredItems, setFilteredItems] = useState([]);
-  // Sample data for demonstration
   const [selectedItems, setSelectedItems] = useState([]);
   const [programOptions, setProgramOptions] = useState(['Youth Program', 'Retail Sales', 'Recycle', 'Earn-a-bicycle', 'Earn-a-computer']);
   const [selectedProgram, setSelectedProgram] = useState('');
   const [assignProgramClicked, setAssignProgramClicked] = useState(false);
 
   const handleSearch = () => {
-    const filtered = donatedItems.filter(item =>
-      item.id.toString().includes(searchInput) ||
-      item.name.toLowerCase().includes(searchInput.toLowerCase()) ||
-      item.donor.toLowerCase().includes(searchInput.toLowerCase()) ||
-      item.date.includes(searchInput) ||
-      item.program.toLowerCase().includes(searchInput.toLowerCase()) ||
-      item.status.toLowerCase().includes(searchInput.toLowerCase())
-    );
+    const filtered = donatedItems.filter(item => {
+      const searchLower = searchInput.toLowerCase();
+      return (
+        item.id.toString().includes(searchLower) ||
+        item.name.toLowerCase().includes(searchLower) ||
+        item.donor.toLowerCase().includes(searchLower) ||
+        item.date.includes(searchLower) ||
+        (programFilter !== '' && item.program.toLowerCase().includes(programFilter.toLowerCase())) ||
+        (statusFilter !== '' && item.status.toLowerCase().includes(statusFilter.toLowerCase()))
+      );
+    });
     setFilteredItems(filtered);
-  };
-
-  const handleSort = (event) => {
-    // Implement your sorting logic here
-    console.log('Sorting by:', event.target.value);
-  };
-
-  const handleOpenFilters = () => {
-    // Implement your filter logic here
-    console.log('Opening filters...');
   };
 
   const handleCheckboxChange = (itemId) => {
@@ -63,7 +57,14 @@ function DonatedItemsList() {
     setAssignProgramClicked(!assignProgramClicked);
   };
 
-  // Sample data for demonstration
+  const handleHeaderFilter = (key) => {
+    if (key === 'program') {
+      setProgramFilter('');
+    } else if (key === 'status') {
+      setStatusFilter('');
+    }
+  };
+
   const [donatedItems, setDonatedItems] = useState([
     { id: 811253, name: 'Bicycle', donor: 'Mary', date: '2024-02-25', program: 'Not Assigned', status: 'Donated' },
     { id: 811249, name: 'Computer', donor: 'James', date: '2024-02-06', program: 'Not Assigned', status: 'In Storage Facility' },
@@ -74,7 +75,7 @@ function DonatedItemsList() {
   ]);
 
   return (
-    <div>
+    <div className="container">
       <div className="header">
         <div className="logo-container">
           <img
@@ -83,63 +84,61 @@ function DonatedItemsList() {
             className="logo"
           />
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}></div>
-          <div className="search-bar">
-            <input
-              type="text"
-              placeholder="Search using Item Id, Name, Donor, Date, Program, or Status"
-              value={searchInput}
-              onChange={(e) => setSearchInput(e.target.value)}
-            />
-            <button className="search-button" onClick={handleSearch}><FaSearch /></button>
-          </div>
-
-          <div className="options">
-            <div className="dropdowns">
-              <select className="sort-options" onChange={handleSort}>
-                <option value="" disabled defaultValue>
-                  Sort
-                </option>
-                <option value="dateAsc">Date Ascending</option>
-                <option value="dateDesc">Date Descending</option>
-              </select>
-
-              <button className="set-program-button" onClick={handleOpenFilters}>Filters</button>
-            </div>
-          </div>
+        <div className="search-bar">
+          <input
+            type="text"
+            placeholder="Search using Item Id, Name, Donor, Date, Program, or Status"
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
+          />
+          <button className="search-button" onClick={handleSearch}><FaSearch /></button>
         </div>
-
         <div style={{ textAlign: 'right' }}>
           <button onClick={toggleAssignProgram}>
             {assignProgramClicked ? "Hide Assign Program" : "Assign Program"}
           </button>
         </div>
-      {assignProgramClicked && (
-        <div>
-          <select value={selectedProgram} onChange={handleProgramChange}>
-            <option value="">Select Program</option>
-            {programOptions.map(option => (
-              <option key={option} value={option}>{option}</option>
-            ))}
-          </select>
-          <button onClick={updatePrograms}>Update Programs</button>
-        </div>
-      )}
-
+        {assignProgramClicked && (
+          <div>
+            <select value={selectedProgram} onChange={handleProgramChange}>
+              <option value="">Select Program</option>
+              {programOptions.map(option => (
+                <option key={option} value={option}>{option}</option>
+              ))}
+            </select>
+            <button onClick={updatePrograms}>Update Programs</button>
+          </div>
+        )}
+      </div>
+      <div className="filters">
+        <input
+          type="text"
+          placeholder="Filter by Program"
+          value={programFilter}
+          onChange={(e) => setProgramFilter(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Filter by Status"
+          value={statusFilter}
+          onChange={(e) => setStatusFilter(e.target.value)}
+        />
+      </div>
       <table className="item-list">
         <thead>
           <tr>
-            <th>S.No</th>
-            <th>Item_ID</th>
-            <th>Item_Name</th>
-            <th>Donor Name</th>
-            <th>Donation Date</th>
-            <th>Program</th>
-            <th>Status</th>
+            <th onClick={() => handleHeaderFilter('id')}>S.No</th>
+            <th onClick={() => handleHeaderFilter('id')}>Item_ID</th>
+            <th onClick={() => handleHeaderFilter('name')}>Item_Name</th>
+            <th onClick={() => handleHeaderFilter('donor')}>Donor Name</th>
+            <th onClick={() => handleHeaderFilter('date')}>Donation Date</th>
+            <th onClick={() => handleHeaderFilter('program')}>Program</th>
+            <th onClick={() => handleHeaderFilter('status')}>Status</th>
             {assignProgramClicked && <th>Select</th>}
           </tr>
         </thead>
         <tbody>
+          {/* Display filtered items or original data based on search results */}
           {(filteredItems.length > 0 ? filteredItems : donatedItems).map((item, index) => (
             <tr key={item.id}>
               <td>{index + 1}</td>
