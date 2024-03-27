@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const Login = (props) => {
@@ -6,6 +6,10 @@ const Login = (props) => {
     const [captcha, setCaptcha] = useState("");
     const [captchaValue, setCaptchaValue] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
+
+    useEffect(() => {
+        generateCaptcha();
+    }, []); // Run only once after component mounts
 
     const generateCaptcha = () => {
         const randomCaptcha = Math.random().toString(36).substring(7);

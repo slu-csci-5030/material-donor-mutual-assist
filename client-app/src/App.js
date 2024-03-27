@@ -9,6 +9,7 @@ import ResetPasswordPage from './Components/ResetPasswordPage';
 import StatusDisplayPage from './Components/StatusDisplayPage';
 import AdminHeader from './Components/AdminHeader';
 import DonatedItemsList from './Components/DonatedItemsList';
+import TrackEmailPage from './Components/TrackEmailPage';
 
 
 const App = () => {
