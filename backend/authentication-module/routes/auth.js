@@ -10,14 +10,14 @@ const JWT_SECRET = 'Harryisagoodb$oy';
 
 // Create a pool for connecting to PostgreSQL
 const pool = new Pool({
-  user: 'admin',
+  user: 'postgres',
   host: 'localhost',
   database: 'mdma',
   password: 'admin',
   port: 5432, 
 });
 
-// ROUTE 1: Create a User using: POST "/api/auth/createuser". No login required
+// ROUTE 1: Create a User using: POST "/api/auth/createuser".
 router.post('/createuser', [
   body('name', 'Enter a valid name').isLength({ min: 3 }),
   body('email', 'Enter a valid email').isEmail(),
