@@ -25,6 +25,6 @@ function sendReminderEmails() {
         body: "This is a reminder for " + reminderMessage + ".",
       });
     }
-  }
-}
+ }
+ }
 https://docs.google.com/forms/d/10CyDlSfpfKnAQQqtlgD9s5TOxJAuyJee5MADPKz7F6c/edit
