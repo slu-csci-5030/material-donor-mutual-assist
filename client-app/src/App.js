@@ -18,7 +18,7 @@ const App = () => {
         <Navbar />
         
         <Routes> {}
-          <Route path='/' element={<Home/>} />
+          
           <Route path="/login" element={<Login />} /> {/* Use element prop to render components */}
           <Route path="/register" element={<Register />}/>
           <Route path="/about" element={<Home />}/>
