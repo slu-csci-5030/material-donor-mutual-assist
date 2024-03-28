@@ -11,7 +11,7 @@ const JWT_SECRET = 'Harryisagoodb$oy';
 // Create a pool for connecting to PostgreSQL
 const pool = new Pool({
   user: 'admin',
-  host: 'localhost',
+  host: 'mdma-database-container',
   database: 'mdma',
   password: 'admin',
   port: 5432, 

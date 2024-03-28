@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const Login = (props) => {
+const Login = () => {
     const [credentials, setCredentials] = useState({ email: "", password: "" });
     const [captcha, setCaptcha] = useState("");
     const [captchaValue, setCaptchaValue] = useState("");
@@ -21,23 +21,26 @@ const Login = (props) => {
             return;
         }
 
-        // const response = await fetch("http://localhost:5000/api/auth/login", {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify({ email: credentials.email, password: credentials.password })
-        // });
-        // const json = await response.json();
+        const response = await fetch("http://localhost:5000/api/auth/login", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email: credentials.email, password: credentials.password })
+        });
+        const json = await response.json();
 
-        // if (json.success) {
-        //     localStorage.setItem('token', json.authtoken);
-        //     localStorage.setItem('name', json.name);
-            window.location.href = '/About';
-        // } else {
-        //     setErrorMessage("Invalid credentials");
-        // }
-        alert("Login Success");
+        if (json.success) {
+            localStorage.setItem('token', json.authtoken);
+
+            // Retrieve user's name from the response and store it in localStorage
+            localStorage.setItem('username', json.user.name);
+
+            // Redirect to the Dashboard page
+            window.location.href = '/AdminHeader';
+        } else {
+            setErrorMessage("Invalid credentials");
+        }
     };
 
     const onChange = (e) => {
