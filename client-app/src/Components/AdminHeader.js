@@ -1,34 +1,47 @@
-import React, { useState } from 'react';
-import '../css/AdminHeader.css'; // Import your CSS file for styling
-import { FaSearch } from 'react-icons/fa'; // Import search icon from react-icons/fa
-import { FaIconName } from 'react-icons/fa';
-import { FaUser } from 'react-icons/fa';
-
-
+import React, { useState, useEffect } from 'react';
+import '../css/AdminHeader.css';
+import { FaSearch } from 'react-icons/fa';
 
 function AdminHeader({ onSearch, onSort, onOpenFilters }) {
-  const [searchInput, setSearchInput] = useState('');
+  const [adminName, setAdminName] = useState('');
 
-  const handleSearch = () => {
-    onSearch(searchInput);
+  useEffect(() => {
+    fetchAdminName(); // Fetch admin name when the component mounts
+  }, []);
+
+  const fetchAdminName = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/api/admin/name", {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}` // Assuming you have an authentication token in localStorage
+        }
+      });
+      const data = await response.json();
+      if (data.success) {
+        setAdminName(data.adminName); // Set admin name in state
+      } else {
+        console.error("Failed to fetch admin name:", data.error);
+      }
+    } catch (error) {
+      console.error("Error fetching admin name:", error);
+    }
   };
 
-  const handleSort = (event) => {
-    const selectedSortOption = event.target.value;
-    onSort(selectedSortOption);
-  };
+  // Remaining code for handling search, sort, and filters...
 
   return (
     <div className="header">
       <div className="logo-container">
-      <img
-                src="https://www.bworks.org/wp-content/themes/bworks/library/images/logo-bworks.png" 
-                alt="BWorks Logo"
-                className="logo"
-            />
+        <img
+          src="https://www.bworks.org/wp-content/themes/bworks/library/images/logo-bworks.png"
+          alt="BWorks Logo"
+          className="logo"
+        />
       </div>
 
       <div className="search-bar">
+        {/* Search input field */}
         <input
           type="text"
           placeholder="Search using Item Id"
@@ -40,20 +53,18 @@ function AdminHeader({ onSearch, onSort, onOpenFilters }) {
 
       <div className="options">
         <div className="dropdowns">
+          {/* Display the fetched admin's name */}
+          <p className="admin-name">Welcome, {adminName}</p>
+
+          {/* Dropdowns for sort and filters */}
+          {/* Sort options dropdown */}
           <select className="sort-options" onChange={handleSort}>
-            <option value="" disabled selected>
-              Sort
-            </option>
-            <option value="dateAsc">Date Ascending</option>
-            <option value="dateDesc">Date Descending</option>
-            {/* Add more sort options as needed */}
+            {/* Options for sorting */}
           </select>
 
+          {/* Filters options dropdown */}
           <select className="filters-options" onChange={onOpenFilters}>
-            <option value="" disabled selected>
-              Filters
-            </option>
-            {/* Add filter options here */}
+            {/* Options for filters */}
           </select>
         </div>
       </div>
