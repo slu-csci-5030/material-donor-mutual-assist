@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Interface</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="number"] {
+            width: 200px;
+            margin-bottom: 10px;
+        }
+        
+        #submitBtn {
+            margin-top: 10px;
+        }
+        
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>New Donor </h2>
+    <form id="userForm">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" required>
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" required>
+        <label for="contact">Contact (10 digits):</label>
+        <input type="tel" id="contact" pattern="[0-9]{10}" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+        <label for="zipCode">Zip Code (5 digits):</label>
+        <input type="text" id="zipCode" pattern="[0-9]{5}" required>
+        <button type="submit" id="submitBtn">Submit</button>
+    </form>
+
+    <div id="errorMessages"></div>
+
+    <script>
+        document.getElementById("userForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            validateForm();
+        });
+
+        function validateForm() {
+            var firstName = document.getElementById("firstName").value;
+            var lastName = document.getElementById("lastName").value;
+            var contact = document.getElementById("contact").value;
+            var email = document.getElementById("email").value;
+            var zipCode = document.getElementById("zipCode").value;
+
+            var errorMessages = [];
+
+            if (!firstName.trim()) {
+                errorMessages.push("First Name is required.");
+            }
+            if (!lastName.trim()) {
+                errorMessages.push("Last Name is required.");
+            }
+            if (!contact.trim()) {
+                errorMessages.push("Contact information is required.");
+            }
+            if (!isValidEmail(email)) {
+                errorMessages.push("Invalid email address.");
+            }
+            if (!isValidZipCode(zipCode)) {
+                errorMessages.push("Invalid zip code.");
+            }
+
+            displayErrors(errorMessages);
+        }
+
+        function isValidEmail(email) {
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function isValidZipCode(zipCode) {
+            // Assuming 6-digit zip code
+            var zipCodeRegex = /^\d{5}$/;
+            return zipCodeRegex.test(zipCode);
+        }
+
+        function displayErrors(errors) {
+            var errorContainer = document.getElementById("errorMessages");
+            errorContainer.innerHTML = "";
+            if (errors.length > 0) {
+                errors.forEach(function(error) {
+                    var errorElement = document.createElement("p");
+                    errorElement.textContent = error;
+                    errorElement.className = "error";
+                    errorContainer.appendChild(errorElement);
+                });
+            } else {
+                errorContainer.innerHTML = "<p>No errors. Form submitted successfully.</p>";
+            }
+        }
+    </script>
+</body>
+
+</html>
