@@ -3,7 +3,8 @@ name: Development task
 about: Describe a task that needs to be completed, to make progress toward a feature.
 title: "[TASK] - Short Description of the task"
 labels: ''
-assignees: ''
+assignees: ${{ github.actor }}
+projects: 'material-donor-mutual-assist'
 
 ---
 

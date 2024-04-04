@@ -4,7 +4,8 @@ about: Suggest an idea for this project
 title: "[FEATURE] - Short Description of the feature"
 labels: Donation Details Module, Donor Details Module, Email Module, Feature, Program
   Assignment Module, Status Assignment Module
-assignees: ''
+assignees: ${{ github.actor }}
+projects: 'material-donor-mutual-assist'
 
 ---
 
