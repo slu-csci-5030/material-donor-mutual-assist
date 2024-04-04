@@ -3,7 +3,9 @@ name: Bug report
 about: Create a report to help us improve
 title: "[BUG] - Short Description of the Issue"
 labels: bug
-assignees: ''
+assignees: ${{ github.actor }}
+projects: 'material-donor-mutual-assist'
+
 
 ---
 
