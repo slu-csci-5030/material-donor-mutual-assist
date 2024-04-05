@@ -58,33 +58,39 @@ const ResetPasswordPage = () => {
   };
 
   return (
-    <div>
-      <h2>Reset Password</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>New Password:</label>
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={handleChange}
-            required
-          />
+    <div className="container">
+      <div className="row justify-content-center">
+        <div className="col-md-6">
+          <h2>Reset Password</h2>
+          <form onSubmit={handleSubmit}>
+            <div className="mb-3">
+              <label className="form-label">New Password:</label>
+              <input
+                type="password"
+                name="password"
+                value={password}
+                onChange={handleChange}
+                className="form-control"
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <label className="form-label">Confirm Password:</label>
+              <input
+                type="password"
+                name="confirmPassword"
+                value={confirmPassword}
+                onChange={handleChange}
+                className="form-control"
+                required
+              />
+            </div>
+            {error && <div className="alert alert-danger">{error}</div>}
+            {message && <div className="alert alert-success">{message}</div>}
+            <button type="submit" className="btn btn-primary">Reset Password</button>
+          </form>
         </div>
-        <div>
-          <label>Confirm Password:</label>
-          <input
-            type="password"
-            name="confirmPassword"
-            value={confirmPassword}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        {error && <div className="alert alert-danger">{error}</div>}
-        {message && <div className="alert alert-success">{message}</div>}
-        <button type="submit" className="btn btn-primary">Reset Password</button>
-      </form>
+      </div>
     </div>
   );
 };

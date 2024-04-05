@@ -18,6 +18,26 @@ function AdminHeader({ onSearch, onSort, onOpenFilters }) {
     onSort(selectedSortOption);
   };
 
+  const fetchAdminName = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/api/admin/name", {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}` // Assuming you have an authentication token in localStorage
+        }
+      });
+      const data = await response.json();
+      if (data.success) {
+        setAdminName(data.adminName); // Set admin name in state
+      } else {
+        console.error("Failed to fetch admin name:", data.error);
+      }
+    } catch (error) {
+      console.error("Error fetching admin name:", error);
+    }
+  };
+
+
   return (
     <div className="header">
       <div className="logo-container">
