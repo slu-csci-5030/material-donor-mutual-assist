@@ -6,6 +6,8 @@ const Login = (props) => {
     const [captcha, setCaptcha] = useState("");
     const [captchaValue, setCaptchaValue] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
+    const [invalidCaptchaCount, setInvalidCaptchaCount] = useState(0); // New state variable
+    const [isButtonDisabled, setIsButtonDisabled] = useState(false); // New state variable
 
     const generateCaptcha = () => {
         const randomCaptcha = Math.random().toString(36).substring(7);
@@ -17,7 +19,18 @@ const Login = (props) => {
 
         // Validate CAPTCHA
         if (captchaValue.toLowerCase() !== captcha.toLowerCase()) {
-            setErrorMessage("Incorrect CAPTCHA. Please try again.");
+            setErrorMessage("Incorrect Credentials. Please try again.");
+            setInvalidCaptchaCount(invalidCaptchaCount + 1); // Increase invalid captcha count
+
+            // If invalid captcha count reaches 5, disable the button for a specific time
+            if (invalidCaptchaCount >= 4) {
+                setIsButtonDisabled(true);
+                setTimeout(() => {
+                    setIsButtonDisabled(false);
+                    setInvalidCaptchaCount(0); 
+                    setErrorMessage("Login disabled due to multiple failed attempts. Please try again Later.");
+                }, 30000);
+            }
             return;
         }
 
@@ -66,9 +79,9 @@ const Login = (props) => {
                 </div>
                 {errorMessage && <div className="alert alert-danger" role="alert">{errorMessage}</div>}
 
-                <button type="submit" className="btn btn-primary" disabled={!captchaValue}>Submit</button>
-                <Link to="/forgot-password" className="btn btn-link">Forgot Password?</Link> {/* Link to Forgot Password page */}
-                <button type="button" className="btn btn-secondary" onClick={generateCaptcha}>Refresh CAPTCHA</button>
+                <button type="submit" className="btn btn-primary" disabled={!captchaValue || isButtonDisabled}>Submit</button> {/* Disable button if captcha is not entered or if button is disabled */}
+            <Link to="/forgot-password" className="btn btn-link">Forgot Password?</Link> {/* Link to Forgot Password page */}
+            <button type="button" className="btn btn-secondary" onClick={generateCaptcha}>Refresh CAPTCHA</button>
             </form>
         </div>
     );
