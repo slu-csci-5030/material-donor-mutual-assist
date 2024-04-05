@@ -1,13 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import '../css/AdminHeader.css';
-import { FaSearch } from 'react-icons/fa';
+import React, { useState } from 'react';
+import '../css/AdminHeader.css'; // Import your CSS file for styling
+import { FaSearch } from 'react-icons/fa'; // Import search icon from react-icons/fa
+import { FaIconName } from 'react-icons/fa';
+import { FaUser } from 'react-icons/fa';
+
+
 
 function AdminHeader({ onSearch, onSort, onOpenFilters }) {
-  const [adminName, setAdminName] = useState('');
+  const [searchInput, setSearchInput] = useState('');
 
-  useEffect(() => {
-    fetchAdminName(); // Fetch admin name when the component mounts
-  }, []);
+  const handleSearch = () => {
+    onSearch(searchInput);
+  };
+
+  const handleSort = (event) => {
+    const selectedSortOption = event.target.value;
+    onSort(selectedSortOption);
+  };
 
   const fetchAdminName = async () => {
     try {
@@ -28,20 +37,18 @@ function AdminHeader({ onSearch, onSort, onOpenFilters }) {
     }
   };
 
-  // Remaining code for handling search, sort, and filters...
 
   return (
     <div className="header">
       <div className="logo-container">
-        <img
-          src="https://www.bworks.org/wp-content/themes/bworks/library/images/logo-bworks.png"
-          alt="BWorks Logo"
-          className="logo"
-        />
+      <img
+                src="https://www.bworks.org/wp-content/themes/bworks/library/images/logo-bworks.png" 
+                alt="BWorks Logo"
+                className="logo"
+            />
       </div>
 
       <div className="search-bar">
-        {/* Search input field */}
         <input
           type="text"
           placeholder="Search using Item Id"
@@ -53,18 +60,20 @@ function AdminHeader({ onSearch, onSort, onOpenFilters }) {
 
       <div className="options">
         <div className="dropdowns">
-          {/* Display the fetched admin's name */}
-          <p className="admin-name">Welcome, {adminName}</p>
-
-          {/* Dropdowns for sort and filters */}
-          {/* Sort options dropdown */}
           <select className="sort-options" onChange={handleSort}>
-            {/* Options for sorting */}
+            <option value="" disabled selected>
+              Sort
+            </option>
+            <option value="dateAsc">Date Ascending</option>
+            <option value="dateDesc">Date Descending</option>
+            {/* Add more sort options as needed */}
           </select>
 
-          {/* Filters options dropdown */}
           <select className="filters-options" onChange={onOpenFilters}>
-            {/* Options for filters */}
+            <option value="" disabled selected>
+              Filters
+            </option>
+            {/* Add filter options here */}
           </select>
         </div>
       </div>
