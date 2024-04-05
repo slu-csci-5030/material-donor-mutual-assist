@@ -91,15 +91,17 @@ function DonatedItemsList() {
             className="logo"
           />
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}></div>
         <div className="search-bar">
-          <input
-            type="text"
-            placeholder="Search using Item Id, Name, Donor, Date, Program, or Status"
-            value={searchInput}
-            onChange={(e) => setSearchInput(e.target.value)}
-          />
-          <button className="search-button" onClick={handleSearch}><FaSearch /></button>
+          <div className="search-container">
+            <input
+              type="text"
+              placeholder="Search using Item Id, Name, Donor, Date, Program, or Status"
+              value={searchInput}
+              onChange={(e) => setSearchInput(e.target.value)}
+              style={{ marginRight: '10px' }}
+            />
+            <button className="search-button" onClick={handleSearch}><FaSearch /></button>
+          </div>
         </div>
 
         <div className="options">
