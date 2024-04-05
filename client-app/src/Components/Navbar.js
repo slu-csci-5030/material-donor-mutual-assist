@@ -55,6 +55,10 @@ const Navbar = () => {
                         <li className="nav-item" style={{ fontSize: "20px", paddingLeft: "10px" }}>
                             <Link className="nav-link" to="/donations">Donations</Link> {/* Example link for About page */}
                         </li>
+                        <li className="nav-item" style={{ fontSize: "20px", paddingLeft: "10px" }}>
+                            {/* Use Link component for navigation */}
+                            <Link className="nav-link" to="/Add_Donation">Add Donation</Link>
+                        </li>
                     </ul>
                 </div>
                 {isLoggedIn && (
