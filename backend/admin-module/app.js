@@ -9,7 +9,8 @@ var usersRouter = require('./routes/users');
 var donarListRouter = require('./routes/donor-details/donars_List');
 var donar_module_router = require('./routes/demo/donar-module');
 var submitformRouter = require('./routes/demo/submit-form');
-var adminRouter = require('./routes/admin-details/crud_admin')
+var adminRouter = require('./routes/admin-details/crud_admin');
+var inventoryRouter = require('./routes/admin-details/crud_inventory');
 var app = express();
 
 // view engine setup
@@ -24,6 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/inventory', inventoryRouter)
 app.use('/donorsList', donarListRouter);
 app.use('/donar-module', donar_module_router);
 app.use('/submit-form', submitformRouter);
