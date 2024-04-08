@@ -81,7 +81,6 @@ const ProjectStatus = () => {
             <div key={member.name}>
               <p>{member.name}</p>
               <p>Commits: {member.commits}</p>
-              {/* You can use CSS to style the graph */}
             </div>
           ))}
         </div>
