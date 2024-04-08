@@ -9,6 +9,7 @@ import ResetPasswordPage from './Components/ResetPasswordPage';
 import StatusDisplayPage from './Components/StatusDisplayPage';
 import AdminHeader from './Components/AdminHeader';
 import DonatedItemsList from './Components/DonatedItemsList';
+import ProjectStatus from './Components/InformationRadiator';
 
 
 const App = () => {
@@ -29,6 +30,7 @@ const App = () => {
             <AdminHeader />
             <DonatedItemsList />
           </>} />
+          <Route path="/info-radiator" element={<ProjectStatus/>}/>
         </Routes>
       </div>
     </Router>
