@@ -1,0 +1,56 @@
+/* script.css */
+
+
+/* Apply styles to form labels */
+
+label {
+    display: block;
+    /* Ensure labels appear on a new line */
+    margin-bottom: 5px;
+    /* Add some space between labels */
+    font-weight: bold;
+    /* Make labels bold */
+}
+
+
+/* Apply styles to form input fields */
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+    width: calc(100% - 10px);
+    /* Adjust input width to fit inside the form */
+    padding: 5px;
+    /* Add some padding to input fields */
+    margin-bottom: 10px;
+    /* Add space between input fields */
+}
+
+
+/* Apply styles to buttons */
+
+button {
+    padding: 10px 20px;
+    /* Add padding to buttons */
+    background-color: #007bff;
+    /* Blue background color */
+    color: #fff;
+    /* White text color */
+    border: none;
+    /* Remove border */
+    cursor: pointer;
+    /* Add pointer cursor on hover */
+    margin-right: 10px;
+    /* Add space between buttons */
+}
+
+button[type="submit"] {
+    background-color: green;
+    /* Green background color for submit button */
+}
+
+button[type="button"] {
+    background-color: red;
+    /* Red background color for clear button */
+}
