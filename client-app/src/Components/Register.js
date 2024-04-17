@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const Register = () => {
-    const [credentials, setCredentials] = useState({ name: "", email: "", password: "" });
+    const [credentials, setCredentials] = useState({ name: "", email: "", password: "", contactnumber: ""});
     const [passwordStrength, setPasswordStrength] = useState("weak");
     const [successMessage, setSuccessMessage] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
@@ -87,6 +87,10 @@ const Register = () => {
                     <p className='my-3'>Password Strength:</p>  <p className={`text-${passwordStrength} my-3 mx-2`} style={{ marginTop: '5px', textAlign: 'center', fontWeight: 'bold' }}>{passwordStrength.toUpperCase()}</p>
                     </div>
 
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="contactnumber" className="form-label">Contact Number</label>
+                    <input type="text" className="form-control" value={credentials.name} onChange={(e) => setCredentials({ ...credentials, contactnumber: e.target.value })} id="contactnumber" name="contactnumber" aria-describedby="emailHelp" />
                 </div>
                 {errorMessage && <div className="alert alert-danger" role="alert">{errorMessage}</div>}
                 {successMessage && <div className="alert alert-success" role="alert">{successMessage}</div>}
