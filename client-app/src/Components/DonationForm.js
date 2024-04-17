@@ -8,14 +8,14 @@ const DonationForm = () => {
       <h2 className="text-lg font-bold mb-4">Add a donation</h2>
       
       <form>
-        <div className="mb-4">
-          <label className="block text-sm font-bold mb-2" htmlFor="itemType">
-            Item Type
-          </label>
+      <div className="mb-4">
+        <label htmlFor="itemType" className="block text-sm font-bold mb-2">
+          Item Type
+        </label>
           <select id="itemType" name="itemType" className="border p-2 w-full">
-            {/* Options */}
-          </select>
-        </div>
+          {/* Options */}
+       </select>
+      </div>
 
         <div className="mb-4">
           <label className="block text-sm font-bold mb-2" htmlFor="productNumber">
