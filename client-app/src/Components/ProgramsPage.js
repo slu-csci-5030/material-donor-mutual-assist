@@ -49,7 +49,7 @@ function ProgramsPage() {
                         
                     </div>
                 ))}
-                <div className='program-card'>
+                <div className='program-card add-program-card'>
                     <Link to="/addprogram" >
                         <button>Add Program</button>
                     </Link>  
