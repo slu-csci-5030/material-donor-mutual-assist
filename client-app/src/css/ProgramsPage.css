@@ -1,0 +1,47 @@
+.programs-container {
+    padding: 20px;
+    text-align: center;
+}
+
+.program-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.program-card {
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: left;
+    display: flex; /* Makes the .program-card a flex container */
+    flex-direction: column; /* Aligns children of the card in a column */
+    justify-content: space-between; /* Distributes space around items */
+}
+
+.program-card h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.program-card p {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.program-card p strong {
+    font-weight: bold;
+}
+
+.add-program-card { /* Specific class for the add program card */
+    align-items: center; /* Centers the button horizontally */
+    justify-content: center; /* Centers the button vertically */
+}
+
+.add-program-card button {
+    width: 100%; /* Optional: Adjust the width of the button */
+    padding: 10px 0; /* Adds padding for better clickability */
+    text-align: center; /* Ensures text is centered within the button */
+}
