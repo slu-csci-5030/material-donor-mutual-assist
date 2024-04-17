@@ -8,15 +8,24 @@ const AddDonations = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        // Basic validation
+        if (!donation.type.trim() || !donation.description.trim()) {
+            setErrorMessage("Both fields are required!");
+            return;
+        }
+
         // Here you can implement the logic to send the donation data to the server
         // For demonstration purposes, I'm just displaying a success message
         setSuccessMessage("Donation added successfully!");
 
-        // Reset the form
+        // Reset the form and clear error message
         setDonation({ type: "", description: "" });
+        setErrorMessage("");
     };
 
     const handleChange = (e) => {
+        // Clear error message when user starts typing again
+        setErrorMessage("");
         setDonation({ ...donation, [e.target.name]: e.target.value });
     };
 
@@ -41,3 +50,4 @@ const AddDonations = () => {
 };
 
 export default AddDonations;
+
