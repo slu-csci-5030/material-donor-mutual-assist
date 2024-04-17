@@ -1,6 +1,7 @@
 .programs-container {
     padding: 20px;
     text-align: center;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
 }
 
 .program-list {
@@ -15,6 +16,9 @@
     border-radius: 8px;
     padding: 20px;
     text-align: left;
+    display: flex; /* Makes the .program-card a flex container */
+    flex-direction: column; /* Aligns children of the card in a column */
+    justify-content: space-between; /* Distributes space around items */
 }
 
 .program-card h2 {
@@ -30,4 +34,15 @@
 
 .program-card p strong {
     font-weight: bold;
+}
+
+.add-program-card { /* Specific class for the add program card */
+    align-items: center; /* Centers the button horizontally */
+    justify-content: center; /* Centers the button vertically */
+}
+
+.add-program-card button {
+    width: 100%; /* Optional: Adjust the width of the button */
+    padding: 10px 0; /* Adds padding for better clickability */
+    text-align: center; /* Ensures text is centered within the button */
 }
