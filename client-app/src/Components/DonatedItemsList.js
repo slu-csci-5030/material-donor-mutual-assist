@@ -193,7 +193,7 @@ function DonatedItemsList() {
        </div>
       
 
-      <table className="item-list">
+      <table className="item-list" style={{border: '2px solid black'}}>
         <thead>
           <tr>
             <th>S.No</th>
