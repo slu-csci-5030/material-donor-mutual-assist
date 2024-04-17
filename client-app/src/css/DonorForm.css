@@ -1,0 +1,87 @@
+.button-margin {
+    margin-left: 10px; /* Slight space between buttons for better visual separation */
+}
+
+.outer-container {
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+    background: linear-gradient(to right, #6a11cb, #2575fc); /* Adding a gradient background from purple to blue */
+    min-height: 100vh; /* Full view height to cover the entire vertical space */
+    box-sizing: border-box;
+}
+
+.donor-form {
+    width: 100%;
+    max-width: 400px; /* Limiting max width for better form readability */
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff; /* Crisp white background for the form */
+    border: 2px solid #0056b3; /* Blue border for a pop of color */
+    border-radius: 10px; /* Rounded borders for a modern look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slightly deeper shadow for a subtle 3D effect */
+}
+
+input[type="text"],
+input[type="email"] {
+    width: calc(100% - 24px); /* Full width minus padding for alignment */
+    padding: 10px 12px; /* Sufficient padding for text inputs */
+    border: 2px solid #cccccc; /* Subtle border for inputs */
+    border-radius: 4px; /* Rounded corners for inputs */
+    transition: border-color 0.3s; /* Smooth transition for hover effects */
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus {
+    border-color: #0056b3; /* Highlight focus with blue border */
+}
+
+button {
+    background-color: #007bff; /* Bright blue background for buttons */
+    color: white; /* White text for legibility */
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px; /* Rounded corners for buttons */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition for button background on hover */
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker blue on hover for visual feedback */
+}
+
+label {
+    color: #333; /* Darker text for better readability */
+    font-size: 14px; /* Appropriate font size for labels */
+    margin-bottom: 5px; /* Space between label and input */
+    display: block; /* Ensure labels are block level for correct alignment */
+}
+
+.radio-group {
+    display: flex;
+    gap: 10px; /* Space between radio buttons */
+}
+
+.radio-group label {
+    color: #666; /* Lighter color for less emphasis on radio button labels */
+    font-size: 14px;
+}
+
+.error-message,
+.success-message {
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+    text-align: center;
+    color: white;
+    font-size: 14px;
+}
+
+.error-message {
+    background-color: #dc3545; /* Red for errors */
+}
+
+.success-message {
+    background-color: #28a745; /* Green for success */
+}
