@@ -229,9 +229,9 @@ function DonatedItemsList() {
           ))}
         </tbody>
       </table>
-      <div style={{ position: 'fixed', bottom: '20px', right: '20px' }}>
-        <button onClick={() => handleAddDonationClick()}>
-            <FaPlus size={24} />
+      <div className="plusbutton" style={{ position: 'fixed', bottom: '20px', right: '20px' }}>
+        <button onClick={() => handleAddDonationClick()} style={{ backgroundColor: 'green', color: 'white', border: 'none', outline: 'none', cursor: 'pointer' }}>
+          <FaPlus size={12} />
         </button>
       </div>
     </div>
