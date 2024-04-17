@@ -90,7 +90,7 @@ const Register = () => {
                 </div>
                 {errorMessage && <div className="alert alert-danger" role="alert">{errorMessage}</div>}
                 {successMessage && <div className="alert alert-success" role="alert">{successMessage}</div>}
-                <button type="submit" className="btn btn-primary">Register</button>
+                <button type="submit" className="btn1 ">Register</button>
             </form>
         </div>
     );

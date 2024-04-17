@@ -109,7 +109,7 @@ const RegisterPage = () => {
                         required
                     />
                 </div>
-                <button type="submit">Register</button>
+                <button type="submit" className='btn1'>Register</button>
             </form>
         </div>
     );

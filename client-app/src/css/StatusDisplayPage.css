@@ -38,11 +38,13 @@ button {
     padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
+    display: block; /* Ensures the button takes up the full width */
+    margin: 0 auto; /* Centers the button horizontally */
 }
+
 
 button[type="submit"] {
     background-color: #2ecc40;
+
 }
 
-/* Additional styling as needed */
-/* ... */
