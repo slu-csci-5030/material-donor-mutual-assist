@@ -40,6 +40,10 @@ button {
     cursor: pointer;
 }
 
+header .plusbutton{
+    background-color: green;
+  }
+
 button[type="submit"] {
     background-color: #2ecc40;
 }
