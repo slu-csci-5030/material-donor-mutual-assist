@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import '../css/Login.css';
 
 const Login = (props) => {
     const [credentials, setCredentials] = useState({ email: "", password: "" });
@@ -49,7 +50,7 @@ const Login = (props) => {
     };
 
     return (
-        <div>
+        <div className='login'>
             <form onSubmit={handleSubmit} className='my-5 container'>
                 <div className="mb-3">
                     <label htmlFor="email" className="form-label">Email address</label>
