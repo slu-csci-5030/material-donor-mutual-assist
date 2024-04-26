@@ -32,6 +32,27 @@ function DonatedItemsList() {
   const handleSort = (event) => {
     // Implement your sorting logic here
     console.log('Sorting by:', event.target.value);
+    if (event.target.value === 'idDesc') {
+      const sortedItems = [...donatedItems].sort((a, b) => b.id - a.id);
+      setFilteredItems(sortedItems);
+    } else if (event.target.value === 'idAsc') {
+      const sortedItems = [...donatedItems].sort((a, b) => a.id - b.id);
+      setFilteredItems(sortedItems);
+    } else if (event.target.value === 'dateAsc') {
+      const sortedItems = [...donatedItems].sort((a, b) => {
+        const dateA = new Date(a.date);
+        const dateB = new Date(b.date);
+        return dateA - dateB;
+      });
+      setFilteredItems(sortedItems);
+    } else if (event.target.value === 'dateDesc') {
+      const sortedItems = [...donatedItems].sort((a, b) => {
+        const dateA = new Date(a.date);
+        const dateB = new Date(b.date);
+        return dateB - dateA;
+      });
+      setFilteredItems(sortedItems);
+    }
   };
 
   const handleOpenFilters = () => {
@@ -97,11 +118,13 @@ function DonatedItemsList() {
 
   // Sample data for demonstration
   const [donatedItems, setDonatedItems] = useState([
+    { id: 811240, name: 'Bicycle', donor: 'Peter', date: '2024-01-13', program: 'Not Assigned', status: 'Received' },
     { id: 811253, name: 'Bicycle', donor: 'Mary', date: '2024-02-25', program: 'Not Assigned', status: 'Donated' },
-    { id: 811249, name: 'Computer', donor: 'James', date: '2024-02-06', program: 'Not Assigned', status: 'In Storage Facility' },
     { id: 811247, name: 'Computer', donor: 'Vivian', date: '2024-01-26', program: 'Not Assigned', status: 'Refurbished' },
+    { id: 811220, name: 'Computer', donor: 'Jacky', date: '2024-11-23', program: 'Not Assigned', status: 'Donated' },
     { id: 811246, name: 'Bicycle', donor: 'Elizabeth', date: '2024-01-21', program: 'Not Assigned', status: 'Item Sold' },
-    { id: 811240, name: 'Bicycle', donor: 'Peter', date: '2024-01-13', program: 'Not Assigned', status: 'Received' }
+    { id: 811249, name: 'Computer', donor: 'James', date: '2024-02-06', program: 'Not Assigned', status: 'In Storage Facility' },
+    { id: 811239, name: 'Bicycle', donor: 'Park', date: '2024-10-13', program: 'Not Assigned', status: 'Received' }
     // Add more items here...
   ]);
 
@@ -132,6 +155,8 @@ function DonatedItemsList() {
                 <option value="" disabled defaultValue>
                   Sort
                 </option>
+                <option value="idAsc">Item ID Ascending</option>
+                <option value="idDesc">Item ID Descending</option>
                 <option value="dateAsc">Date Ascending</option>
                 <option value="dateDesc">Date Descending</option>
               </select>
