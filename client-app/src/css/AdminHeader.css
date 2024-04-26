@@ -1,7 +1,7 @@
 .header {
     background-color: #8cc969;
     color: white;
-    padding: 20px;
+    padding-top: 10px;
     text-align: center;
     display: flex;
     justify-content: space-between;
@@ -47,15 +47,7 @@
 
 .dropdowns {
     display: flex;
-}
-
-.sort-options,
-.filters-options {
-    padding: 5px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    width: 150px;
-    margin-right: 10px;
+    padding-top: 5px;
 }
 
 .set-program-button {
@@ -65,6 +57,10 @@
     border-radius: 4px;
     cursor: pointer;
     padding: 8px 16px;
+}
+.filter-options{
+    margin: 10px;
+    padding: 10px;
 }
 
 .item-list {
