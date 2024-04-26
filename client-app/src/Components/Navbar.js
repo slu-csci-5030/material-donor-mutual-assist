@@ -64,7 +64,7 @@ const Navbar = () => {
                                             fontWeight: location.pathname === '/register' ? 'bold' : 'normal', 
                                             color: location.pathname === '/register' ? 'black' : 'inherit' 
                                         }} 
-                            >Register</Link>
+                            >Sign Up</Link>
                           </li>
                         )}
                         <li className="nav-item" style={{ fontSize: "20px", paddingLeft: "10px" }}>
