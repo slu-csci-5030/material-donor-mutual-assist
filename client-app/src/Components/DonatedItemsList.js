@@ -125,15 +125,15 @@ function DonatedItemsList() {
                 onChange={(e) => setSearchInput(e.target.value)}
               />
               <button className="search-button" onClick={handleSearch}><FaSearch /></button>
-            </div>
+          </div>
 
             <div className="dropdowns">
               <select className="sort-options" onChange={handleSort}>
                 <option value="" disabled defaultValue>
                   Sort
                 </option>
-                <option value="dateAsc">Date Ascending</option>
-                <option value="dateDesc">Date Descending</option>
+                <option value="idAsc">Date Ascending</option> 
+                <option value="idDesc">Date Descending</option>
               </select>
 
               {/* Filter by Item Name */}
