@@ -10,35 +10,41 @@ const ForgotPassword = () => {
     const [otpValidated, setOtpValidated] = useState(false);
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
+    e.preventDefault();
 
-        // Generate OTP
-        const otp_val = Math.floor(Math.random() * 10000);
+    // Validate email field
+    if (!email.trim()) {
+        alert('Please enter your email.');
+        return;
+    }
 
-        // Send OTP via Email
-        try {
+    // Generate OTP
+    const otp_val = Math.floor(Math.random() * 10000);
 
-            var templateParams = {
-                mailto: email,
-                otp: otp_val
-              };
-              
-              await emailjs.send('service_colowdq', 'template_auqd04h', templateParams, 'N55r1ckjMp3Ax_S0_').then(
-                (response) => {
-                  console.log('SUCCESS!', response.status, response.text);
-                },
-                (error) => {
-                  console.log('FAILED...', error);
-                },
-              );
-            
-            setOtp(otp_val);
-            setOtpSent(true);
-        } catch (error) {
-            console.error('Error sending OTP:', error);
-            alert('Error sending OTP. Please try again.');
-        }
-    };
+    // Send OTP via Email
+    try {
+        var templateParams = {
+            mailto: email,
+            otp: otp_val
+        };
+        
+        await emailjs.send('service_colowdq', 'template_auqd04h', templateParams, 'N55r1ckjMp3Ax_S0_').then(
+            (response) => {
+                console.log('SUCCESS!', response.status, response.text);
+            },
+            (error) => {
+                console.log('FAILED...', error);
+            },
+        );
+        
+        setOtp(otp_val);
+        setOtpSent(true);
+    } catch (error) {
+        console.error('Error sending OTP:', error);
+        alert('Error sending OTP. Please try again.');
+    }
+};
+
 
     const handleOtpVerification = () => {
         if (otp === parseInt(otp)) {
