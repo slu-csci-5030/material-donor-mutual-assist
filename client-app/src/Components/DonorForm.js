@@ -125,6 +125,7 @@ const DonorForm = () => {
           <label htmlFor="donor_firstName" className="block text-sm font-semibold mb-1">First Name:</label>
           <input
             type="text"
+            placeholder='First Name'
             id="donor_firstName"
             name="donor_firstName"
             value={formData.donor_firstName}
@@ -138,6 +139,7 @@ const DonorForm = () => {
           <label htmlFor="donor_lastName" className="block text-sm font-semibold mb-1">Last Name:</label>
           <input
             type="text"
+            placeholder='Last Name'
             id="donor_lastName"
             name="donor_lastName"
             value={formData.donor_lastName}
@@ -151,6 +153,7 @@ const DonorForm = () => {
           <label htmlFor="donor_contact" className="block text-sm font-semibold mb-1">Contact Number:</label>
           <input
             type="text"
+            placeholder='Contact Number'
             id="donor_contact"
             name="donor_contact"
             value={formData.donor_contact}
@@ -162,6 +165,7 @@ const DonorForm = () => {
           <label htmlFor="donor_email" className="block text-sm font-semibold mb-1">Email:</label>
           <input
             type="email"
+            placeholder='Email'
             id="donor_email"
             name="donor_email"
             value={formData.donor_email}
@@ -175,6 +179,7 @@ const DonorForm = () => {
           <label htmlFor="donor_address_line1" className="block text-sm font-semibold mb-1">Address Line 1:</label>
           <input
             type="text"
+            placeholder='Address Line 1'
             id="donor_address_line1"
             name="donor_address_line1"
             value={formData.donor_address_line1}
@@ -186,6 +191,7 @@ const DonorForm = () => {
           <label htmlFor="donor_address_line2" className="block text-sm font-semibold mb-1">Address Line 2:</label>
           <input
             type="text"
+            placeholder='Address Line 2'
             id="donor_address_line2"
             name="donor_address_line2"
             value={formData.donor_address_line2}
@@ -197,6 +203,7 @@ const DonorForm = () => {
           <label htmlFor="donor_state" className="block text-sm font-semibold mb-1">State:</label>
           <input
             type="text"
+            placeholder='State'
             id="donor_state"
             name="donor_state"
             value={formData.donor_state}
@@ -208,6 +215,7 @@ const DonorForm = () => {
           <label htmlFor="donor_city" className="block text-sm font-semibold mb-1">City:</label>
           <input
             type="text"
+            placeholder='City'
             id="donor_city"
             name="donor_city"
             value={formData.donor_city}
@@ -219,6 +227,7 @@ const DonorForm = () => {
           <label htmlFor="donor_zipcode" className="block text-sm font-semibold mb-1">Zip Code:</label>
           <input
             type="text"
+            placeholder='Zip Code'
             id="donor_zipcode"
             name="donor_zipcode"
             value={formData.donor_zipcode}
@@ -257,14 +266,14 @@ const DonorForm = () => {
         </div>
         <button
           type="submit"
-          className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-full button-margin"
-          style={{ backgroundColor: 'blue' }}>
+          className="text-white font-semibold py-2 px-4 rounded-full button-margin"
+          style={{ backgroundColor: '#462dea'}}>
           Add Donor
         </button>
         <button 
           type="button" 
-          className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-full button-margin"
-          style={{ backgroundColor: 'blue' }}
+          className=" text-white font-semibold py-2 px-4 rounded-full button-margin"
+          style={{backgroundColor: '#462dea'}}
           onClick={() => setFormData({ ...formData, email_opt_in: '' })}>
           Refresh
         </button>
