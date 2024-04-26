@@ -80,13 +80,17 @@ const Register = () => {
                     <input type="email" className="form-control" value={credentials.email} onChange={(e) => setCredentials({ ...credentials, email: e.target.value })} id="email" name="email" aria-describedby="emailHelp" />
                     <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
                 </div>
+                <div className="mb-3">
+                    <label htmlFor="phone" className="form-label">Phone Number</label>
+                    <input type="text" className="form-control" value={credentials.phone} onChange={(e) => setCredentials({ ...credentials, email: e.target.value })} id="phone" name="phone" aria-describedby="emailHelp" />
+                    <div id="emailHelp" className="form-text">We'll never share your Phone number with anyone else.</div>
+                </div>
                 <div className="mb-3 position-relative">
                     <label htmlFor="password" className="form-label">Password</label>
                     <input type="password" className="form-control" value={credentials.password} onChange={handleChange} name="password" id="password" />
                     <div className="password-strength-meter" style={{display: 'flex'}}>
                     <p className='my-3'>Password Strength:</p>  <p className={`text-${passwordStrength} my-3 mx-2`} style={{ marginTop: '5px', textAlign: 'center', fontWeight: 'bold' }}>{passwordStrength.toUpperCase()}</p>
                     </div>
-
                 </div>
                 {errorMessage && <div className="alert alert-danger" role="alert">{errorMessage}</div>}
                 {successMessage && <div className="alert alert-success" role="alert">{successMessage}</div>}
