@@ -115,67 +115,67 @@ function DonatedItemsList() {
             className="logo"
           />
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}></div>
-          <div className="options">
+        <div className="options">
           <div className="search-bar">
-              <input
-                type="text"
-                placeholder="Search using Item Id, Name, Donor, Date, Program, or Status"
-                value={searchInput}
-                onChange={(e) => setSearchInput(e.target.value)}
-              />
-              <button className="search-button" onClick={handleSearch}><FaSearch /></button>
-            </div>
+            <input
+              type="text"
+              placeholder="Search using Item Id, Name, Donor, Date, Program, or Status"
+              value={searchInput}
+              onChange={(e) => setSearchInput(e.target.value)}
+            />
+            <button className="search-button" onClick={handleSearch}><FaSearch /></button>
+          </div>
 
-            <div className="dropdowns">
-              <select className="sort-options" onChange={handleSort}>
-                <option value="" disabled defaultValue>
-                  Sort
-                </option>
-                <option value="dateAsc">Date Ascending</option>
-                <option value="dateDesc">Date Descending</option>
-              </select>
 
-              {/* Filter by Item Name */}
-              <select className="filter-options" onChange={handleFilterByItemName}>
-                <option value="" disabled selected>
-                  Filter by Item Name
-                </option>
-                <option value="Bicycle">Bicycle</option>
-                <option value="Computer">Computer</option>
-              </select>
+          <div className="dropdowns">
+            <select className="filter-options" onChange={handleSort}>
+              <option value="" disabled defaultValue>
+                Sort
+              </option>
+              <option value="dateAsc">Date Ascending</option>
+              <option value="dateDesc">Date Descending</option>
+            </select>
 
-              {/* Filter by Program */}
-              <select className="filter-options" onChange={handleFilterByProgram}>
-                <option value="" disabled selected>
-                  Filter by Program
-                </option>
-                {programOptions.map(option => (
-                  <option key={option} value={option}>{option}</option>
-                ))}
-              </select>
+            {/* Filter by Item Name */}
+            <select className="filter-options" onChange={handleFilterByItemName}>
+              <option value="" disabled selected>
+                Filter by Item Name
+              </option>
+              <option value="Bicycle">Bicycle</option>
+              <option value="Computer">Computer</option>
+            </select>
 
-              {/* Filter by Status */}
-              <select className="filter-options" onChange={handleFilterByStatus}>
-                <option value="" disabled selected>
-                  Filter by Status
-                </option>
-                <option value="Donated">Donated</option>
-                <option value="In Storage Facility">In Storage Facility</option>
-                <option value="Refurbished">Refurbished</option>
-                <option value="Received">Received</option>
-                <option value="Item Sold">Item Sold</option>
-              </select>
-            </div>
+            {/* Filter by Program */}
+            <select className="filter-options" onChange={handleFilterByProgram}>
+              <option value="" disabled selected>
+                Filter by Program
+              </option>
+              {programOptions.map(option => (
+                <option key={option} value={option}>{option}</option>
+              ))}
+            </select>
+
+            {/* Filter by Status */}
+            <select className="filter-options" onChange={handleFilterByStatus}>
+              <option value="" disabled selected>
+                Filter by Status
+              </option>
+              <option value="Donated">Donated</option>
+              <option value="In Storage Facility">In Storage Facility</option>
+              <option value="Refurbished">Refurbished</option>
+              <option value="Received">Received</option>
+              <option value="Item Sold">Item Sold</option>
+            </select>
           </div>
         </div>
+      </div>
 
-        {/* <div >
+      {/* <div >
           
         </div> */}
-      
-        <div class="div-updateprogram">
-          
+
+      <div class="div-updateprogram">
+
         {assignProgramClicked && (
           <div class="div-addprogram">
             <select value={selectedProgram} onChange={handleProgramChange}>
@@ -187,11 +187,11 @@ function DonatedItemsList() {
             <button onClick={updatePrograms}>Update Programs</button>
           </div>
         )}
-          <button onClick={toggleAssignProgram}>
-            {assignProgramClicked ? "Hide Assign Program" : "Assign Program"}
-          </button>
-       </div>
-      
+        <button onClick={toggleAssignProgram}>
+          {assignProgramClicked ? "Hide Assign Program" : "Assign Program"}
+        </button>
+      </div>
+
 
       <table className="item-list">
         <thead>
@@ -231,7 +231,7 @@ function DonatedItemsList() {
       </table>
       <div style={{ position: 'fixed', bottom: '20px', right: '20px' }}>
         <button onClick={() => handleAddDonationClick()}>
-            <FaPlus size={24} />
+          <FaPlus size={24} />
         </button>
       </div>
     </div>
