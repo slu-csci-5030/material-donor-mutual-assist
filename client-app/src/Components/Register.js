@@ -72,8 +72,12 @@ const Register = () => {
             <h2>Register</h2>
             <form onSubmit={handleSubmit} className='my-5'>
                 <div className="mb-3">
-                    <label htmlFor="name" className="form-label">Name</label>
-                    <input type="text" className="form-control" value={credentials.name} onChange={(e) => setCredentials({ ...credentials, name: e.target.value })} id="name" name="name" aria-describedby="emailHelp" />
+                    <label htmlFor="first_name" className="form-label">First Name</label>
+                    <input type="text" className="form-control" value={credentials.first_name} onChange={(e) => setCredentials({ ...credentials, first_name: e.target.value })} id="first_name" name="first_name" aria-describedby="emailHelp" />
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="last_name" className="form-label">Last Name</label>
+                    <input type="text" className="form-control" value={credentials.last_name} onChange={(e) => setCredentials({ ...credentials, last_name: e.target.value })} id="last_name" name="last_name" aria-describedby="emailHelp" />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="email" className="form-label">Email address</label>
