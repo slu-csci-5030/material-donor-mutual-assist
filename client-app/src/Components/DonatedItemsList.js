@@ -166,6 +166,7 @@ function DonatedItemsList() {
                 <option value="Received">Received</option>
                 <option value="Item Sold">Item Sold</option>
               </select>
+
             </div>
           </div>
         </div>
@@ -203,6 +204,7 @@ function DonatedItemsList() {
             <th>Donation Date</th>
             <th>Program</th>
             <th>Status</th>
+            <th>Barcode</th>
             {assignProgramClicked && <th>Select</th>}
           </tr>
         </thead>
@@ -216,6 +218,7 @@ function DonatedItemsList() {
               <td>{item.date}</td>
               <td>{item.program}</td>
               <td>{item.status}</td>
+              <td>-</td>
               {assignProgramClicked && (
                 <td>
                   <input
