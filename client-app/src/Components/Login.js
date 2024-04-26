@@ -12,33 +12,20 @@ const Login = (props) => {
         setCaptcha(randomCaptcha);
     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+   const handleSubmit = (e) => {
+    e.preventDefault();
 
-        // Validate CAPTCHA
-        if (captchaValue.toLowerCase() !== captcha.toLowerCase()) {
-            setErrorMessage("Incorrect CAPTCHA. Please try again.");
-            return;
-        }
+    // Check if email, password, or captcha is empty
+    if (!credentials.email || !credentials.password || !captchaValue) {
+        setErrorMessage("Please fill in all fields.");
+        return;
+    }
 
-        // const response = await fetch("http://localhost:5000/api/auth/login", {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify({ email: credentials.email, password: credentials.password })
-        // });
-        // const json = await response.json();
+    // Alert login success
+    alert("Login Successful");
+};
 
-        // if (json.success) {
-        //     localStorage.setItem('token', json.authtoken);
-        //     localStorage.setItem('name', json.name);
-            window.location.href = '/About';
-        // } else {
-        //     setErrorMessage("Invalid credentials");
-        // }
-        alert("Login Success");
-    };
+    
 
     const onChange = (e) => {
         setCredentials({ ...credentials, [e.target.name]: e.target.value });
