@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const Register = () => {
-    const [credentials, setCredentials] = useState({ name: "", email: "", password: "" });
+    const [credentials, setCredentials] = useState({ FirstName: "", email: "", password: "" });
     const [passwordStrength, setPasswordStrength] = useState("weak");
     const [successMessage, setSuccessMessage] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
@@ -34,7 +34,7 @@ const Register = () => {
         //     headers: {
         //         'Content-Type': 'application/json'
         //     },
-        //     body: JSON.stringify({ name: credentials.name, email: credentials.email, password: credentials.password })
+        //     body: JSON.stringify({ FirstName: credentials.name, email: credentials.email, password: credentials.password })
         // });
 
         // const json = await response.json();
@@ -72,8 +72,8 @@ const Register = () => {
             <h2>Register</h2>
             <form onSubmit={handleSubmit} className='my-5'>
                 <div className="mb-3">
-                    <label htmlFor="name" className="form-label">Name</label>
-                    <input type="text" className="form-control" value={credentials.name} onChange={(e) => setCredentials({ ...credentials, name: e.target.value })} id="name" name="name" aria-describedby="emailHelp" />
+                    <label htmlFor="FIrstName" className="form-label">FirstName</label>
+                    <input type="text" className="form-control" value={credentials.FirstName} onChange={(e) => setCredentials({ ...credentials, FirstName: e.target.value })} id="FirstName" name="FirstName" aria-describedby="emailHelp" />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="email" className="form-label">Email address</label>
