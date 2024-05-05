@@ -259,7 +259,7 @@ const DonorForm = () => {
         <button
           type="submit"
           className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-full button-margin"
-          style={{ backgroundColor: 'blue' }}>
+          style={{ backgroundColor: 'Red' }}>
           Add Donor
         </button>
         <button 
