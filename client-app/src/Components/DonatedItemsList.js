@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { FaSearch } from 'react-icons/fa';
-import { FaPlus } from 'react-icons/fa';
+import { FaSearch, FaPlus } from 'react-icons/fa';
+import Barcode from 'react-barcode';
+import Modal from 'react-modal';
 import '../css/AdminHeader.css';
 import '../css/DonatedItemsList.css';
 
@@ -9,12 +10,11 @@ function DonatedItemsList() {
   const [searchInput, setSearchInput] = useState('');
   const [filteredItems, setFilteredItems] = useState([]);
   const [selectedItems, setSelectedItems] = useState([]);
+  const [selectedItemDetails, setSelectedItemDetails] = useState(null);
   const [programOptions, setProgramOptions] = useState(['Youth Program', 'Retail Sales', 'Recycle', 'Earn-a-bicycle', 'Earn-a-computer']);
   const [selectedProgram, setSelectedProgram] = useState('');
   const [assignProgramClicked, setAssignProgramClicked] = useState(false);
-  const [filterByItemName, setFilterByItemName] = useState('');
-  const [filterByProgram, setFilterByProgram] = useState('');
-  const [filterByStatus, setFilterByStatus] = useState('');
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const navigate = useNavigate();
 
   const handleSearch = () => {
@@ -34,11 +34,6 @@ function DonatedItemsList() {
     console.log('Sorting by:', event.target.value);
   };
 
-  const handleOpenFilters = () => {
-    // Implement your filter logic here
-    console.log('Opening filters...');
-  };
-
   const handleCheckboxChange = (itemId) => {
     if (selectedItems.includes(itemId)) {
       setSelectedItems(selectedItems.filter(id => id !== itemId));
@@ -49,6 +44,12 @@ function DonatedItemsList() {
 
   const handleProgramChange = (event) => {
     setSelectedProgram(event.target.value);
+  };
+
+  const handleBarcodeClick = (itemId) => {
+    const selectedItem = donatedItems.find(item => item.id === itemId);
+    setSelectedItemDetails(selectedItem);
+    setModalIsOpen(true);
   };
 
   const updatePrograms = () => {
@@ -65,21 +66,18 @@ function DonatedItemsList() {
 
   // Function to filter items by item name
   const handleFilterByItemName = (event) => {
-    setFilterByItemName(event.target.value);
     const filtered = donatedItems.filter(item => item.name === event.target.value);
     setFilteredItems(filtered);
   };
 
   // Function to filter items by program
   const handleFilterByProgram = (event) => {
-    setFilterByProgram(event.target.value);
     const filtered = donatedItems.filter(item => item.program === event.target.value);
     setFilteredItems(filtered);
   };
 
   // Function to filter items by status
   const handleFilterByStatus = (event) => {
-    setFilterByStatus(event.target.value);
     const filtered = donatedItems.filter(item => item.status === event.target.value);
     setFilteredItems(filtered);
   };
@@ -92,7 +90,6 @@ function DonatedItemsList() {
   const handleAddDonationClick = () => {
     // Navigate to the DonationForm page
     navigate('/donation-form');
-
   }
 
   // Sample data for demonstration
@@ -170,12 +167,8 @@ function DonatedItemsList() {
           </div>
         </div>
 
-        {/* <div >
-          
-        </div> */}
-      
-        <div class="div-updateprogram">
-          
+      <div class="div-updateprogram">
+
         {assignProgramClicked && (
           <div class="div-addprogram">
             <select value={selectedProgram} onChange={handleProgramChange}>
@@ -187,11 +180,10 @@ function DonatedItemsList() {
             <button onClick={updatePrograms}>Update Programs</button>
           </div>
         )}
-          <button onClick={toggleAssignProgram}>
-            {assignProgramClicked ? "Hide Assign Program" : "Assign Program"}
-          </button>
-       </div>
-      
+        <button onClick={toggleAssignProgram}>
+          {assignProgramClicked ? "Hide Assign Program" : "Assign Program"}
+        </button>
+      </div>
 
       <table className="item-list">
         <thead>
@@ -203,35 +195,42 @@ function DonatedItemsList() {
             <th>Donation Date</th>
             <th>Program</th>
             <th>Status</th>
-            {assignProgramClicked && <th>Select</th>}
+            <th>Barcode</th>
           </tr>
         </thead>
         <tbody>
           {(filteredItems.length > 0 ? filteredItems : donatedItems).map((item, index) => (
             <tr key={item.id}>
               <td>{index + 1}</td>
-              <td><Link to={`/item/${item.id}`} state={{ itemInfo: item }}>{item.id}</Link></td>
+              <td><Link to={/item/${item.id}} state={{ itemInfo: item }}>{item.id}</Link></td>
               <td>{item.name}</td>
               <td>{item.donor}</td>
               <td>{item.date}</td>
               <td>{item.program}</td>
               <td>{item.status}</td>
-              {assignProgramClicked && (
-                <td>
-                  <input
-                    type="checkbox"
-                    checked={selectedItems.includes(item.id)}
-                    onChange={() => handleCheckboxChange(item.id)}
-                  />
-                </td>
-              )}
+              <td>
+                <div onClick={() => handleBarcodeClick(item.id)}>
+                  <Barcode value={item.id.toString()} />
+                </div>
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
+      <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+        <h2>Details</h2>
+        {selectedItemDetails && (
+          <div>
+            <p>Item ID: {selectedItemDetails.id}</p>
+            <p>Item Name: {selectedItemDetails.name}</p>
+            <p>Donor Name: {selectedItemDetails.donor}</p>
+          </div>
+        )}
+        
+      </Modal>
       <div style={{ position: 'fixed', bottom: '20px', right: '20px' }}>
         <button onClick={() => handleAddDonationClick()}>
-            <FaPlus size={24} />
+          <FaPlus size={24} />
         </button>
       </div>
     </div>
@@ -239,4 +238,3 @@ function DonatedItemsList() {
 }
 
 export default DonatedItemsList;
-
