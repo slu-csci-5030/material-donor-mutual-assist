@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa';
 import { FaPlus } from 'react-icons/fa';
+import { Barcode } from 'react-barcode';
 import '../css/AdminHeader.css';
 import '../css/DonatedItemsList.css';
 
@@ -203,6 +204,7 @@ function DonatedItemsList() {
             <th>Donation Date</th>
             <th>Program</th>
             <th>Status</th>
+            <th>Bar Code</th>
             {assignProgramClicked && <th>Select</th>}
           </tr>
         </thead>
@@ -216,6 +218,7 @@ function DonatedItemsList() {
               <td>{item.date}</td>
               <td>{item.program}</td>
               <td>{item.status}</td>
+              <td><Barcode value={item.id.toString()}></Barcode> </td>
               {assignProgramClicked && (
                 <td>
                   <input
