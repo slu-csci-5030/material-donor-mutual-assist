@@ -121,8 +121,9 @@ const DonorForm = () => {
         style={{ backgroundColor: 'green' }}>
         {successMessage}</p>}
       <form onSubmit={handleSubmit}>
+        <p><b>"*" indicates required field</b></p>
         <div className="mb-4">
-          <label htmlFor="donor_firstName" className="block text-sm font-semibold mb-1">First Name:</label>
+          <label htmlFor="donor_firstName" className="block text-sm font-semibold mb-1">First Name: *</label>
           <input
             type="text"
             id="donor_firstName"
@@ -135,7 +136,7 @@ const DonorForm = () => {
           {errors.donor_firstName && <p className="text-red-500 text-sm mt-1" style={{color:"red"}}>{errors.donor_firstName}</p>}
         </div>
         <div className="mb-4">
-          <label htmlFor="donor_lastName" className="block text-sm font-semibold mb-1">Last Name:</label>
+          <label htmlFor="donor_lastName" className="block text-sm font-semibold mb-1">Last Name: *</label>
           <input
             type="text"
             id="donor_lastName"
@@ -148,7 +149,7 @@ const DonorForm = () => {
           {errors.donor_lastName && <p className="text-red-500 text-sm mt-1" style={{color:"red"}}>{errors.donor_lastName}</p>}
         </div>
         <div className="mb-4">
-          <label htmlFor="donor_contact" className="block text-sm font-semibold mb-1">Contact Number:</label>
+          <label htmlFor="donor_contact" className="block text-sm font-semibold mb-1">Contact Number: *</label>
           <input
             type="text"
             id="donor_contact"
@@ -159,7 +160,7 @@ const DonorForm = () => {
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="donor_email" className="block text-sm font-semibold mb-1">Email:</label>
+          <label htmlFor="donor_email" className="block text-sm font-semibold mb-1">Email: *</label>
           <input
             type="email"
             id="donor_email"
@@ -172,7 +173,7 @@ const DonorForm = () => {
           {errors.donor_email && <p className="text-red-500 text-sm mt-1" style={{color:"red"}}>{errors.donor_email}</p>}
         </div>
         <div className="mb-4">
-          <label htmlFor="donor_address_line1" className="block text-sm font-semibold mb-1">Address Line 1:</label>
+          <label htmlFor="donor_address_line1" className="block text-sm font-semibold mb-1">Address Line 1: </label>
           <input
             type="text"
             id="donor_address_line1"
@@ -194,7 +195,7 @@ const DonorForm = () => {
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="donor_state" className="block text-sm font-semibold mb-1">State:</label>
+          <label htmlFor="donor_state" className="block text-sm font-semibold mb-1">State: </label>
           <input
             type="text"
             id="donor_state"
@@ -205,7 +206,7 @@ const DonorForm = () => {
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="donor_city" className="block text-sm font-semibold mb-1">City:</label>
+          <label htmlFor="donor_city" className="block text-sm font-semibold mb-1">City: </label>
           <input
             type="text"
             id="donor_city"
@@ -216,7 +217,7 @@ const DonorForm = () => {
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="donor_zipcode" className="block text-sm font-semibold mb-1">Zip Code:</label>
+          <label htmlFor="donor_zipcode" className="block text-sm font-semibold mb-1">Zip Code: *</label>
           <input
             type="text"
             id="donor_zipcode"
@@ -229,7 +230,7 @@ const DonorForm = () => {
           {errors.donor_zipcode && <p className="text-red-500 text-sm mt-1" style={{color:"red"}}>{errors.donor_zipcode}</p>}
         </div>
         <div className="mb-4">
-          <label >Email Opt-in:</label>
+          <label >Email Opt-in: </label>
           <div className="radio-group">
             <label htmlFor="email_opt_in_yes">
               <input
