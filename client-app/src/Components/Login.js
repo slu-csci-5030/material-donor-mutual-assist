@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const Login = (props) => {
@@ -12,6 +12,10 @@ const Login = (props) => {
         setCaptcha(randomCaptcha);
     };
 
+    useEffect(() => {
+        generateCaptcha(); // Generate CAPTCHA when component is mounted
+    }, []); // Empty dependency array ensures this effect runs only once, similar to componentDidMount
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -21,23 +25,8 @@ const Login = (props) => {
             return;
         }
 
-        // const response = await fetch("http://localhost:5000/api/auth/login", {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify({ email: credentials.email, password: credentials.password })
-        // });
-        // const json = await response.json();
-
-        // if (json.success) {
-        //     localStorage.setItem('token', json.authtoken);
-        //     localStorage.setItem('name', json.name);
-            window.location.href = '/About';
-        // } else {
-        //     setErrorMessage("Invalid credentials");
-        // }
-        alert("Login Success");
+        // Redirect to the Donation component if CAPTCHA is correct
+        window.location.href = '/donations';
     };
 
     const onChange = (e) => {
