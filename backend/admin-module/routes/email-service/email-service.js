@@ -18,9 +18,15 @@
 
 // // Define email parameters
 // const params = {
+<<<<<<< HEAD
+//   Source: 'srinivas@gmail.com',
+//   Destination: {
+//     ToAddresses: ['srinivas@gmail.com']
+=======
 //   Source: 'yrlmanoharreddymeda@gmail.com',
 //   Destination: {
 //     ToAddresses: ['yrlmanoharreddymeda@gmail.com']
+>>>>>>> b02a10912fbcd4d04552db0707698714247af623
 //   },
 //   Message: {
 //     Subject: {
