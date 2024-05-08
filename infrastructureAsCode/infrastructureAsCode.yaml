@@ -1,0 +1,74 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'CloudFormation template for creating an Ubuntu EC2 instance and PostgreSQL RDS database'
+
+Parameters:
+  InstanceType:
+    Type: String
+    Default: t2.micro
+    Description: 'EC2 instance type'
+  KeyName:
+    Type: String
+    Description: 'EC2 Key Pair name'
+  DBInstanceName:
+    Type: String
+    Default: 'mydbinstance'
+    Description: 'Name for the RDS database instance'
+  DBInstanceClass:
+    Type: String
+    Default: db.t3.micro
+    Description: 'RDS instance class'
+  DBName:
+    Type: String
+    Default: mydatabase
+    Description: 'Name of the database'
+  DBUsername:
+    Type: String
+    Default: myadmin
+    Description: 'Username for the database'
+  DBPassword:
+    Type: String
+    NoEcho: true
+    Description: 'Password for the database'
+
+Resources:
+  MyEC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-0e3a6d8ff4c8fe246 # Ubuntu 20.04 LTS
+      InstanceType: !Ref InstanceType
+      KeyName: !Ref KeyName
+      SecurityGroups:
+        - Ref: MySecurityGroup
+      Tags:
+        - Key: Name
+          Value: MyEC2Instance
+
+  MySecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: 'Security group for allowing SSH and HTTP traffic'
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0 # Allow SSH from anywhere
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0 # Allow HTTP from anywhere
+
+  MyDBInstance:
+    Type: AWS::RDS::DBInstance
+    Properties:
+      DBInstanceIdentifier: !Ref DBInstanceName
+      DBInstanceClass: !Ref DBInstanceClass
+      Engine: postgres
+      EngineVersion: '16.2'
+      DBName: !Ref DBName
+      MasterUsername: !Ref DBUsername
+      MasterUserPassword: !Ref DBPassword
+      AllocatedStorage: 20
+      PubliclyAccessible: true
+      Tags:
+        - Key: Name
+          Value: MyDBInstance

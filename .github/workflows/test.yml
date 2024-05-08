@@ -1,0 +1,54 @@
+name: Docker Build and Push and run testcases
+
+on:
+  push:
+    branches:
+      - srinivas
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install dependencies for Admin Module
+        run: npm install --prefix backend/admin-module
+
+      - name: Run unit tests for Admin Module
+        run: npm run test --prefix backend/admin-module
+
+      - name: Install dependencies for Donor Module
+        run: npm install --prefix backend/donor-module
+
+      - name: Run unit tests for Donor Module
+        run: npm run test --prefix backend/donor-module
+
+      - name: Set up Docker
+        run: docker --version
+
+      - name: Build Admin Module Docker image
+        run: |
+          cd backend/admin-module
+          docker build -t srinivas/sri-admin-module .
+
+      - name: Build Donor Module Docker image
+        run: |
+          cd backend/donor-module
+          docker build -t srinivas/sri-donor-module .
+
+      - name: Log in to Docker Hub
+        run: docker login -u srinivas -p sr123%
+
+      - name: Push Admin Module Docker image
+        run: docker push srinivas/sri-admin-module
+      
+      - name: Push Donor Module Docker image
+        run: docker push srinivas/sri-donor-module
+
+      - name: Run Docker container for Admin Module
+        run: docker run -d -p 3000:3000 srinivas/sri-admin-module
+
+      - name: Run Docker container for Donor Module
+        run: docker run -d -p 4000:4000 srinivas/sri-donor-module
