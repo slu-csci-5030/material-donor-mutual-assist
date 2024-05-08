@@ -3,7 +3,11 @@ name: Docker Build and Push and run testcases
 on:
   push:
     branches:
+<<<<<<< HEAD
       - srinivas
+=======
+      - backend_yrlmanoharreddy
+>>>>>>> b02a10912fbcd4d04552db0707698714247af623
 
 jobs:
   build-and-test:
@@ -31,11 +35,16 @@ jobs:
       - name: Build Admin Module Docker image
         run: |
           cd backend/admin-module
+<<<<<<< HEAD
           docker build -t srinivas/sri-admin-module .
+=======
+          docker build -t yrlmanoharreddymeda/yrl-admin-module .
+>>>>>>> b02a10912fbcd4d04552db0707698714247af623
 
       - name: Build Donor Module Docker image
         run: |
           cd backend/donor-module
+<<<<<<< HEAD
           docker build -t srinivas/sri-donor-module .
 
       - name: Log in to Docker Hub
@@ -52,3 +61,21 @@ jobs:
 
       - name: Run Docker container for Donor Module
         run: docker run -d -p 4000:4000 srinivas/sri-donor-module
+=======
+          docker build -t yrlmanoharreddymeda/yrl-donor-module .
+
+      - name: Log in to Docker Hub
+        run: docker login -u yrlmanoharreddymeda -p Manohar123%
+
+      - name: Push Admin Module Docker image
+        run: docker push yrlmanoharreddymeda/yrl-admin-module
+      
+      - name: Push Donor Module Docker image
+        run: docker push yrlmanoharreddymeda/yrl-donor-module
+
+      - name: Run Docker container for Admin Module
+        run: docker run -d -p 3000:3000 yrlmanoharreddymeda/yrl-admin-module
+
+      - name: Run Docker container for Donor Module
+        run: docker run -d -p 4000:4000 yrlmanoharreddymeda/yrl-donor-module
+>>>>>>> b02a10912fbcd4d04552db0707698714247af623

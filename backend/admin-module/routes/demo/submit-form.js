@@ -10,13 +10,22 @@ router.post('/', function(req, res, next) {
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
+<<<<<<< HEAD
             user: 'gampasanisrinivas@gmail.com',
             pass: 'Srinivas@12'
+=======
+            user: 'manoharmeda6@gmail.com',
+            pass: 'qzrz ywwq vtnw wdzm'
+>>>>>>> b02a10912fbcd4d04552db0707698714247af623
         }
     });
   
     const mailOptions = {
+<<<<<<< HEAD
         from: 'gampasanisrinivas@gmail.com',
+=======
+        from: 'manoharmeda6@gmail.com',
+>>>>>>> b02a10912fbcd4d04552db0707698714247af623
         to: email,
         subject: 'Thank You for Your Donation',
         text: `Dear ${name},\n\nThank you for donating ${material} to B-Works. Your contribution is greatly appreciated.\n\nSincerely,\nThe B-Works Team`

@@ -4,11 +4,19 @@ on:
   push:
     branches:
       - main
+<<<<<<< HEAD
       - srinivas
   pull_request:
     branches:
       - main
       - srinivas
+=======
+      - backend_yrlmanoharreddy
+  pull_request:
+    branches:
+      - main
+      - backend_yrlmanoharreddy
+>>>>>>> b02a10912fbcd4d04552db0707698714247af623
 
 jobs:
   lint:
