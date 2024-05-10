@@ -99,7 +99,9 @@ function DonatedItemsList() {
     { id: 811249, name: 'Computer', donor: 'James', date: '2024-02-06', program: 'Not Assigned', status: 'In Storage Facility' },
     { id: 811247, name: 'Computer', donor: 'Vivian', date: '2024-01-26', program: 'Not Assigned', status: 'Refurbished' },
     { id: 811246, name: 'Bicycle', donor: 'Elizabeth', date: '2024-01-21', program: 'Not Assigned', status: 'Item Sold' },
-    { id: 811240, name: 'Bicycle', donor: 'Peter', date: '2024-01-13', program: 'Not Assigned', status: 'Received' }
+    { id: 811240, name: 'Bicycle', donor: 'Peter', date: '2024-01-13', program: 'Not Assigned', status: 'Received' },
+    { id: 811241, name: 'Bicycle', donor: 'Pot', date: '2024-06-05', program: 'Not Assigned', status: 'Received' },
+
     // Add more items here...
   ]);
   const downloadBarcode = (id) => {
