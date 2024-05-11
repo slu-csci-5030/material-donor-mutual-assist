@@ -1,0 +1,40 @@
+name: Provision EC2 instance and RDS database
+  hosts: localhost
+  connection: local
+  gather_facts: no
+
+  vars:
+    instance_type: t2.micro
+    db_instance_class: db.t3.micro
+    db_name: mydatabase
+    db_username: myadmin
+    db_password: password  # Use AWS Secrets Manager or another secure method for production
+
+  tasks:
+    - name: Provision EC2 instance
+      ec2_instance:
+        key_name: my_key_pair  # Replace with your EC2 Key Pair name
+        instance_type: "{{ instance_type }}"
+        image: ami-0c55b159cbfafe1f0  # Ubuntu 20.04 LTS
+        wait: yes
+        region: us-east-1  # Change to your desired AWS region
+        count: 1
+        instance_tags:
+          Name: MyEC2Instance
+      register: ec2
+
+    - name: Get EC2 instance public IP
+      set_fact:
+        ec2_public_ip: "{{ ec2.instances[0].public_ip }}"
+
+    - name: Provision RDS database
+      rds:
+        region: us-east-1  # Change to your desired AWS region
+        state: present
+        command: create
+        instance_name: mydbinstance
+        instance_class: "{{ db_instance_class }}"
+        engine: postgres
+        engine_version: 13.3
+        db_name: "{{ db_name }}"
+    
