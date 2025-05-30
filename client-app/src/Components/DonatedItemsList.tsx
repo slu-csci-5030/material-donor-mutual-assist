@@ -15,7 +15,11 @@ interface SelectedItemDetails extends DonatedItem {
     statuses: Status[];
 }
 
+
+
 const DonatedItemsList: React.FC = () => {
+
+
     const [searchInput, setSearchInput] = useState<string>('');
     const [filteredItems, setFilteredItems] = useState<DonatedItem[]>([]);
     const [selectedItemDetails, setSelectedItemDetails] =
@@ -29,6 +33,16 @@ const DonatedItemsList: React.FC = () => {
     const [itemTypes, setItemTypes] = useState<Set<string>>(new Set());
 
     const navigate = useNavigate();
+
+    const [certificateModalIsOpen, setCertificateModalIsOpen] = useState(false);
+const [certificateItem, setCertificateItem] = useState<DonatedItem | null>(null);
+
+
+const [viewCertificate,setViewCertificate]=useState(false)
+const onViewCertificate = (e:any)=>{
+    e.stopPropagation()
+setViewCertificate(!viewCertificate)
+}
 
     const fetchDonatedItems = async (): Promise<void> => {
         try {
@@ -281,6 +295,7 @@ const DonatedItemsList: React.FC = () => {
                         <th>Status</th>
                         <th>Donation Date</th>
                         <th>Barcode</th>
+                        <th>Certificate</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -317,11 +332,32 @@ const DonatedItemsList: React.FC = () => {
                                         Download Barcode
                                     </button>
                                 </div>
+                            
                             </td>
+                            <td>
+
+<button
+  onClick={(e) => {
+    e.stopPropagation();
+    setCertificateItem(item); // Set selected item for certificate
+    setCertificateModalIsOpen(true); // Open modal
+  }}
+  className="border border-blue-700 hover:bg-blue-700 hover:text-white text-blue-700 font-semibold px-4 py-2 rounded cursor-pointer transition-colors duration-200"
+>
+  View Certificate
+</button>
+
+
+
+                            </td>
+
                         </tr>
                     ))}
                 </tbody>
             </table>
+
+
+
 
             <Modal
                 isOpen={modalIsOpen}

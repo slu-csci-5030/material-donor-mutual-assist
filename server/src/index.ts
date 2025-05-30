@@ -37,11 +37,14 @@ app.use((req: Request, res: Response, next: NextFunction) => {
     next(createError(404));
 });
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {
-    res.locals.message = err.message;
-    res.locals.error = req.app.get('env') === 'development' ? err : {};
-    res.status(err.status || 500);
-    res.render('error');
+    const status = err.status || 500;
+    res.status(status).json({
+        status,
+        message: err.message,
+        stack: process.env.NODE_ENV === 'development' ? err.stack : undefined,
+    });
 });
+
 const startServer = async () => {
     const timestamp = new Date().toISOString(); // Get the current timestamp
 
