@@ -1,7 +1,8 @@
 {
   "devDependencies": {
-    "prettier": "^3.4.2",
+    "@types/pdfkit": "^0.13.9",
     "concurrently": "^8.2.2",
+    "prettier": "^3.4.2",
     "serve": "^14.2.4"
   },
   "scripts": {
