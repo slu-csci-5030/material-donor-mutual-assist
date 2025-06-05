@@ -53,8 +53,12 @@ const DonorList: React.FC = () => {
         const filtered = currentDonors.filter(
             item =>
                 item.id.toString().includes(searchInput) ||
-                item.firstName.toLowerCase().includes(searchInput.toLowerCase()) ||
-                item.lastName.toLowerCase().includes(searchInput.toLowerCase()) ||
+                item.firstName
+                    .toLowerCase()
+                    .includes(searchInput.toLowerCase()) ||
+                item.lastName
+                    .toLowerCase()
+                    .includes(searchInput.toLowerCase()) ||
                 item.email.includes(searchInput),
         );
         setFilteredDonors(filtered);
@@ -93,7 +97,10 @@ const DonorList: React.FC = () => {
                             value={searchInput}
                             onChange={e => setSearchInput(e.target.value)}
                         />
-                        <button className="search-button" onClick={handleSearch}>
+                        <button
+                            className="search-button"
+                            onClick={handleSearch}
+                        >
                             <FaSearch />
                         </button>
                     </div>
@@ -118,14 +125,21 @@ const DonorList: React.FC = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {(filteredDonors.length > 0 ? filteredDonors : currentDonors).map(donor => (
+                    {(filteredDonors.length > 0
+                        ? filteredDonors
+                        : currentDonors
+                    ).map(donor => (
                         <tr key={donor.id}>
                             <td>{donor.id}</td>
                             <td>{donor.firstName}</td>
                             <td>{donor.lastName}</td>
                             <td>{donor.email}</td>
                             <td>
-                                <button onClick={() => handleViewDetailsClick(donor)}>
+                                <button
+                                    onClick={() =>
+                                        handleViewDetailsClick(donor)
+                                    }
+                                >
                                     View More Details
                                 </button>
                             </td>
@@ -162,15 +176,22 @@ const DonorList: React.FC = () => {
                         <p>State: {donorDetails.state}</p>
                         <p>Zipcode: {donorDetails.zipcode}</p>
                         <p>
-                            Opted in for Emails: {donorDetails.emailOptIn ? 'Yes' : 'No'}
+                            Opted in for Emails:{' '}
+                            {donorDetails.emailOptIn ? 'Yes' : 'No'}
                         </p>
                     </div>
                 )}
                 <div>
-                    <button className="edit-button" onClick={() => handleEditDonorClick(donorDetails)}>
+                    <button
+                        className="edit-button"
+                        onClick={() => handleEditDonorClick(donorDetails)}
+                    >
                         Edit
                     </button>
-                    <button className="close-button" onClick={() => setModalIsOpen(false)}>
+                    <button
+                        className="close-button"
+                        onClick={() => setModalIsOpen(false)}
+                    >
                         Close
                     </button>
                 </div>

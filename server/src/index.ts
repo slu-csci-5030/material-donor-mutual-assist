@@ -14,8 +14,6 @@ import donatedItemStatusRouter from './routes/donatedItemStatusRoutes'; // Impor
 import passwordResetRouter from './routes/passwordResetRoutes';
 import certificateRoutes from './routes/certificateRoutes';
 
-
-
 const app = express();
 dotenv.config(); // Load environment variables from .env file
 app.use(cors({ origin: 'http://localhost:3000' }));
@@ -34,8 +32,6 @@ app.use('/donatedItem', donatedItemRouter); // Use DonatedItem routes
 app.use('/donatedItem/status', donatedItemStatusRouter); // Use DonatedItemStatus routes
 app.use('/api/certificates', certificateRoutes);
 app.use('/certificates', certificateRoutes);
-
-
 
 app.use((req: Request, res: Response, next: NextFunction) => {
     next(createError(404));

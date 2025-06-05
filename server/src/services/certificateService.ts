@@ -1,8 +1,8 @@
-import PDFDocument from "pdfkit";
-import getStream from "get-stream";
+import PDFDocument from 'pdfkit';
+import getStream from 'get-stream';
 //import { DonatedItem } from "../modals/donatedItem"; // adjust if your type path is different
 
-export async function generatePDF(item:any): Promise<Buffer> {
+export async function generatePDF(item: any): Promise<Buffer> {
     const doc = new PDFDocument({ margin: 50 });
 
     doc.fontSize(20).text('Certificate of Appreciation', { align: 'center' });
@@ -26,11 +26,10 @@ export async function generatePDF(item:any): Promise<Buffer> {
     doc.text('St. Louis BWorks Team');
 
     return new Promise<Buffer>((resolve, reject) => {
-    const buffers: Buffer[] = [];
-    doc.on('data', buffers.push.bind(buffers));
-    doc.on('end', () => resolve(Buffer.concat(buffers)));
-    doc.on('error', reject);
-    doc.end();
-});
-
+        const buffers: Buffer[] = [];
+        doc.on('data', buffers.push.bind(buffers));
+        doc.on('end', () => resolve(Buffer.concat(buffers)));
+        doc.on('error', reject);
+        doc.end();
+    });
 }

@@ -182,35 +182,37 @@ const DonatedItemsList: React.FC = () => {
             console.error('Barcode element not found');
         }
     };
-     
+
     const handleDownloadCertificate = async (item: DonatedItem) => {
-    try {
-        const response = await fetch(`${process.env.REACT_APP_BACKEND_API_BASE_URL}certificates/generate`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: localStorage.getItem("token") || "",
-            },
-            body: JSON.stringify({ item }),
-        });
+        try {
+            const response = await fetch(
+                `${process.env.REACT_APP_BACKEND_API_BASE_URL}certificates/generate`,
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: localStorage.getItem('token') || '',
+                    },
+                    body: JSON.stringify({ item }),
+                },
+            );
 
-        if (!response.ok) {
-            throw new Error("Failed to generate certificate");
+            if (!response.ok) {
+                throw new Error('Failed to generate certificate');
+            }
+
+            const blob = await response.blob();
+            const url = window.URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', `certificate_${item.id}.pdf`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        } catch (error) {
+            console.error('Error downloading certificate:', error);
         }
-
-        const blob = await response.blob();
-        const url = window.URL.createObjectURL(blob);
-        const link = document.createElement("a");
-        link.href = url;
-        link.setAttribute("download", `certificate_${item.id}.pdf`);
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    } catch (error) {
-        console.error("Error downloading certificate:", error);
-    }
     };
-
 
     if (loading) {
         return <div>Loading...</div>;
@@ -350,14 +352,13 @@ const DonatedItemsList: React.FC = () => {
                             </td>
                             <td>
                                 <button
-                                onClick={e => {
-                                    e.stopPropagation(); // Prevent row click when opening modal
-                                    handleDownloadCertificate(item);
-                                }}
+                                    onClick={e => {
+                                        e.stopPropagation(); // Prevent row click when opening modal
+                                        handleDownloadCertificate(item);
+                                    }}
                                 >
                                     Download Certificate
                                 </button>
-                                
                             </td>
                         </tr>
                     ))}
