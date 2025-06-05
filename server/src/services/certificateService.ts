@@ -14,14 +14,24 @@ export async function generatePDF(item: any): Promise<Buffer> {
     doc.moveDown();
 
     doc.fontSize(14).text(`For generously donating: ${item.itemType}`);
-    doc.text(`On: ${new Date(item.dateDonated).toLocaleDateString()}`);
+    doc.text(`On: ${new Date(item.dateDonated).toLocaleDateString('en-US', {
+  month: 'long',
+  day: 'numeric',
+  year: 'numeric')}`);
     doc.moveDown();
+    doc.opacity(1);
+    const watermarkPath = path.join(__dirname, '../assets/images/bworks-logo.png');
+        if (fs.existsSync(watermarkPath)) {
+            doc.opacity(0.1);
+            doc.image(watermarkPath, 150, 200, { width: 300, align: 'center' });
+            doc.text('We sincerely thank you for your contribution and support.', {
+            align: 'left',
+        });
+    const logoPath = path.join(__dirname, '../assets/images/bworks-logo.png');Add commentMore actions
+        if (fs.existsSync(logoPath)) {
+            doc.image(logoPath, doc.page.width / 2 - 75, 10, { width: 150 });
 
-    doc.text('We sincerely thank you for your contribution and support.', {
-        align: 'left',
-    });
-
-    doc.moveDown(2);
+    doc.moveDown(4);
     doc.text('Sincerely,');
     doc.text('St. Louis BWorks Team');
 
