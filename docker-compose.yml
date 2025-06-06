@@ -1,41 +1,48 @@
 services:
-  mdma-frontend:
-    build: ./client-app
-    ports:
-      - "3000:3000"
-    depends_on:
-      - mdma-backend
-    environment:
-      - REACT_APP_BACKEND_API_BASE_URL=http://localhost:5000/
-
-  mdma-backend:
-    build: ./server
-    ports:
-      - "5000:5000"
-    depends_on:
-      - mdma-database
-    environment:
-      - DATABASE_URL=postgresql://admin:admin@mdma-database:5432/mdma
-
-  mdma-database:
-    image: postgres
-    container_name: mdma-database-container
-    environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: admin
-    volumes:
-      - postgres-data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
-
-  mongo:
-    image: mongo:4.4
-    container_name: mongo
-    volumes:
-      - mongo-data:/data/db
+  mongodb:
+    image: mongo:6.0
+    container_name: rerum-mongo
     ports:
       - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
 
+  rerum-api:
+    build:
+      context: rerum_api
+    container_name: rerumapi
+    ports:
+      - "3001:3001"
+    depends_on:
+      - mongodb
+      - tiny-node
+    environment:
+      - TINYNODE_URL=http://tinynode:3002
+    env_file:
+      - ./rerum_api/.env
+  tiny-node:
+    build:
+      context: tiny_things
+    container_name: tinynode
+    ports:
+      - "3002:3002"
+    depends_on:
+      - mongodb
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017/tinynode
+
+  mongo-express:
+    image: mongo-express
+    container_name: mongo-express
+    ports:
+      - "8081:8081"
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=mongodb
+      - ME_CONFIG_BASICAUTH_USERNAME=
+      - ME_CONFIG_BASICAUTH_PASSWORD=
+      - ME_CONFIG_BASICAUTH=false
+    depends_on:
+      - mongodb
 
 volumes:
-  postgres-data:
+  mongo-data:
