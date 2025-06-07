@@ -1,0 +1,53 @@
+version: "3.8"
+
+services:
+  mongo:
+    image: mongo:4.4
+    restart: always
+    container_name: mdma-mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    ports:
+      - "27017:27017"
+
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - "8081:8081"
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: example
+      ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/
+      ME_CONFIG_BASICAUTH: "false"
+
+  localauth0:
+    image: public.ecr.aws/primaassicurazioni/localauth0:0.8.2
+    ports:
+      - "3002:3002"
+    environment:
+      AUTH0_DOMAIN: local_rerum.auth0.com
+      AUTH0_CLIENT_ID: rerum
+      AUTH0_CLIENT_SECRET: rerum
+      AUTH0_CALLBACK_URL: http://localhost:3001/callback
+
+    healthcheck:
+      test: ["CMD", "/localauth0", "healthcheck"]
+
+  rerum:
+    build: C:\Users\DELL\PSD\material-donor-mutual-assist\rerum-dev-stack\rerum_server_nodejs
+    ports:
+      - "3001:3001"
+    depends_on:
+      - mongo
+      - localauth0
+    env_file:
+      - .env
+
+  tinynode:
+    build: C:\Users\DELL\PSD\material-donor-mutual-assist\rerum-dev-stack\TinyNode
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
