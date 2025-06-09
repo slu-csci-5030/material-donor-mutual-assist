@@ -2,14 +2,14 @@ import express from 'express';
 import path from 'path';
 import fs from 'fs';
 import { generatePDF } from '../services/certificateService';
+import { sendCertificateEmailWithBuffer } from '../services/emailService';
 
 const router = express.Router();
 
-// GET /api/certificates/:donorId/download
+// Route 1: Download existing certificate by donorId
 router.get('/:donorId/download', (req, res) => {
     const { donorId } = req.params;
 
-    // Adjust the path to match where your PDFs are stored
     const filePath = path.join(
         __dirname,
         '../../../certificates',
@@ -22,6 +22,8 @@ router.get('/:donorId/download', (req, res) => {
         res.status(404).send('Certificate not found');
     }
 });
+
+// Route 2: Generate and return certificate as PDF (download)
 router.post('/generate', async (req, res) => {
     try {
         const item = req.body.item;
