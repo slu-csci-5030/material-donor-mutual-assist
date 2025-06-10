@@ -11,6 +11,8 @@ import { DonatedItem } from '../Modals/DonatedItemModal';
 import { DonatedItemStatus as Status } from '../Modals/DonatedItemStatusModal';
 import axios from 'axios';
 
+
+
 interface SelectedItemDetails extends DonatedItem {
     statuses: Status[];
 }
@@ -128,6 +130,15 @@ const DonatedItemsList: React.FC = () => {
         );
         setFilteredItems(filtered);
     };
+    const handleSendCertificate = async (item: DonatedItem) => {
+  try {
+    const res = await axios.post('/api/certificate/send', { item });
+    alert('Certificate sent successfully!');
+  } catch (err) {
+    alert('Failed to send certificate.');
+    console.error(err);
+  }
+};
 
     const handleFilterByProgram = (
         event: React.ChangeEvent<HTMLSelectElement>,
@@ -360,6 +371,8 @@ const DonatedItemsList: React.FC = () => {
                                     Download Certificate
                                 </button>
                             </td>
+
+
                         </tr>
                     ))}
                 </tbody>
