@@ -10,6 +10,7 @@ import { Program } from '../Modals/ProgramModal';
 import { DonatedItem } from '../Modals/DonatedItemModal';
 import { DonatedItemStatus as Status } from '../Modals/DonatedItemStatusModal';
 import axios from 'axios';
+import CertificateTemplate from './CertificateTemplate';
 
 interface SelectedItemDetails extends DonatedItem {
     statuses: Status[];
@@ -30,18 +31,19 @@ const DonatedItemsList: React.FC = () => {
     const [programOptions, setProgramOptions] = useState<Program[]>([]);
     const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
     const [itemTypes, setItemTypes] = useState<Set<string>>(new Set());
-
     const navigate = useNavigate();
 
-    const [certificateModalIsOpen, setCertificateModalIsOpen] = useState(false);
+ 
 const [certificateItem, setCertificateItem] = useState<DonatedItem | null>(null);
 
 
 const [viewCertificate,setViewCertificate]=useState(false)
-const onViewCertificate = (e:any)=>{
-    e.stopPropagation()
-setViewCertificate(!viewCertificate)
-}
+const onViewCertificate = (e: React.MouseEvent, item: DonatedItem) => {
+    e.stopPropagation();
+    localStorage.setItem('certificateItem', JSON.stringify(item));
+    setViewCertificate(true);
+};
+
 
     const fetchDonatedItems = async (): Promise<void> => {
         try {
@@ -205,7 +207,9 @@ setViewCertificate(!viewCertificate)
     }
 
     return (
-        <div>
+        <>
+      <div>
+        <div className='border border-red-800 '>
             <div className="header">
                 <div className="logo-container">
                     <img
@@ -284,6 +288,7 @@ setViewCertificate(!viewCertificate)
                     Add New Donation
                 </button>
             </div>
+            
 
             <table className="item-list">
                 <thead>
@@ -334,18 +339,12 @@ setViewCertificate(!viewCertificate)
                             
                             </td>
                             <td>
-
-<button
-  onClick={(e) => {
-    e.stopPropagation();
-    setCertificateItem(item); // Set selected item for certificate
-    setCertificateModalIsOpen(true); // Open modal
-  }}
-  className="border border-blue-700 hover:bg-blue-700 hover:text-white text-blue-700 font-semibold px-4 py-2 rounded cursor-pointer transition-colors duration-200"
->
-  View Certificate
-</button>
-
+                                
+                               <button
+                                 onClick={(e) => onViewCertificate(e, item)}
+                                 className="text-sm text-blue-600 hover:underline"> 
+                                  View Certificate
+                                </button>
 
 
                             </td>
@@ -357,6 +356,10 @@ setViewCertificate(!viewCertificate)
 
 
 
+                                <div className=' border w-[5rem]'>
+                                    
+                                    <CertificateTemplate/>
+                                </div>
 
             <Modal
                 isOpen={modalIsOpen}
@@ -431,8 +434,15 @@ setViewCertificate(!viewCertificate)
                 <button onClick={handleAddNewDonationClick}>
                     <FaPlus size={24} />
                 </button>
+
             </div>
         </div>
+
+
+        
+        </div>
+
+        </>
     );
 };
 
