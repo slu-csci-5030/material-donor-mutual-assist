@@ -113,6 +113,7 @@ export const generateBlobSASUrl = async (url: string) => {
         permissions: BlobSASPermissions.parse('r'), // Read-only access
         expiresOn: expiryTime,
     };
+    
 
     // Generate SAS token
     const sasToken = generateBlobSASQueryParameters(

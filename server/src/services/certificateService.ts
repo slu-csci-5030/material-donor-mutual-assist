@@ -18,6 +18,7 @@ const accountKey = process.env.AZURE_STORAGE_ACCESS_KEY!;
         accountName,
         accountKey,
     );
+    
     const blobServiceClient = new BlobServiceClient(
         `https://${accountName}.blob.core.windows.net`,
         sharedKeyCredential,

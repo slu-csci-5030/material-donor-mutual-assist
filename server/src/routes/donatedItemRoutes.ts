@@ -88,6 +88,7 @@ router.post(
                         return uploadedUrl;
                     }),
                 );
+                
                 console.log('All files uploaded:', imageUrls);
 
                 const newStatus = await prisma.donatedItemStatus.create({
