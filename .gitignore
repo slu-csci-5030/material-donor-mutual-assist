@@ -5,3 +5,4 @@ package-lock.json
 .vscode
 .env
 rerum_server_nodejs/
+__MACOSX
